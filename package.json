@@ -8,7 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "test": "jest src/spec/App.test.js"
+    "test": "jest src/spec/App.test.js",
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development"
   },
   "dependencies": {
     "react": "^16.6.0",
@@ -21,13 +22,17 @@
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^23.6.0",
-    "regenerator-runtime": "^0.12.1"
+    "regenerator-runtime": "^0.12.1",
+    "webpack": "^4.23.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.js"
+    "setupTestFrameworkScriptFile": "<rootDir>src/spec/setupTests.js"
   }
 }
