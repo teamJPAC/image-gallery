@@ -11,5 +11,5 @@ describe('App', () => {
 
   test('it should exist', () => {
     expect(wrapper.exists()).toBe(true);
-  })
+  });
 });
