@@ -1,7 +1,9 @@
 import React from 'react';
 import Navi from '../src/components/Nav/Nav.js'
-import SubNav from '../src/components/Nav/SubNav.js'
+import Toolbar from '../src/components/Nav/SubNav.js'
 import Gallery from '../src/components/Gallery/Gallery'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
+
 export default class App extends React.Component {
   constructor(props){
     super(props);
@@ -9,11 +11,15 @@ export default class App extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="main-wrapper">
+           <Navi/> 
+      
+        <Toolbar/>
+    
+           <Gallery/>
+        
          
-        <Navi/>
-        <SubNav/>
-        <Gallery/>
+
         Nav Bar<br/>
         image container<br/>
         display images by categories<br/>

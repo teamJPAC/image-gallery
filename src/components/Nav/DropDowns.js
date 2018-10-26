@@ -1,7 +1,19 @@
 import React from 'react';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
 
-const DropDowns = () => (
-  <NavDropdown title="Rent">
+const headerArr = ["Buy", "Rent", "Sell", "Mortgages", "Agent finder", "More"];
+const dropDownOptions = {
+  'Buy': headerArr,
+  'Rent': headerArr,
+  'Sell': headerArr,
+  'Mortgages': headerArr,
+  'Agent finder': headerArr,
+  'More': headerArr,
+};
+const DropDowns = ({header}) => {
+  console.log('header is ', header)
+  return (
+  <NavDropdown title={header}>
             <MenuItem ><b>Zipcode Home For Rent</b></MenuItem>
             <MenuItem divider />
             <MenuItem>Rental Buildings</MenuItem>
@@ -10,7 +22,7 @@ const DropDowns = () => (
             <MenuItem>All Rental Listings</MenuItem>
             <MenuItem>All Rental Buildings</MenuItem>
   </NavDropdown>
-  
-)
+  ) 
+}
 
 export default DropDowns;

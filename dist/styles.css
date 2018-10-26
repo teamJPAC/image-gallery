@@ -1,0 +1,10 @@
+#nav-dropdown.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+#Nav-top-right1, #Nav-top-right2, #Nav-top-right3 {
+  color:#0074e4;
+}
+#Nav-top-right1:hover, #Nav-top-right2:hover, #Nav-top-right3:hover {
+  color: #96b9da;
+}
