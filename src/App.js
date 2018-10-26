@@ -8,16 +8,17 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
   }
-
+  
   render(){
     return(
       <div className="main-wrapper">
-        <div className="navbar-header"></div>
-          <Navi/> 
-          <Toolbar pullRight/>
+        <div className="navbar-header">
+        </div>    
+          <Navi id="nav-top-header" /> 
+          <Toolbar />  
           <Gallery/>
-      </div>
+        </div>
     )
   };
-}
+};
 

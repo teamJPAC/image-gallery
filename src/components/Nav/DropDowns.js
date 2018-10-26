@@ -11,7 +11,6 @@ const dropDownOptions = {
   'More': headerArr,
 };
 const DropDowns = ({header}) => {
-  console.log('header is ', header)
   return (
   <NavDropdown title={header}>
             <MenuItem ><b>Zipcode Home For Rent</b></MenuItem>

@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "jest src/spec/App.test.js",
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development"
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "db:setup": "node database/seed.js"
   },
   "dependencies": {
     "bootstrap": "^4.1.3",
