@@ -1,5 +1,10 @@
+.dropdown > li.dropdown.open {
+  position: static;
+}
 .dropdown:hover .dropdown-menu {
-  display: block;
+  display: table;
+  width: 100%;
+
 }
 
 #Nav-top-right1, #Nav-top-right2, #Nav-top-right3 {
@@ -7,4 +12,16 @@
 }
 #Nav-top-right1:hover, #Nav-top-right2:hover, #Nav-top-right3:hover {
   color: #96b9da;
+}
+.dropdown:hover .dropdown-menu {
+  display: table;
+  border-radius: 0px;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+
+#nav-toolbar {
+  background-color: #d9f0f9;
 }

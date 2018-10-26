@@ -12,19 +12,10 @@ export default class App extends React.Component {
   render(){
     return(
       <div className="main-wrapper">
-           <Navi/> 
-      
-        <Toolbar/>
-    
-           <Gallery/>
-        
-         
-
-        Nav Bar<br/>
-        image container<br/>
-        display images by categories<br/>
-        scrollbar<br/>
-  
+        <div className="navbar-header"></div>
+          <Navi/> 
+          <Toolbar pullRight/>
+          <Gallery/>
       </div>
     )
   };

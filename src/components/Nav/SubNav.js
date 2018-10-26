@@ -7,7 +7,7 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'rea
 const SubNav = () => {
 
     return (
-      <Navbar style={{backgroundColor: '#d9f0f9'}}>
+      <Navbar id="nav-toolbar">
       <Nav>  
         <NavItem><b>CONTACT AGENT</b></NavItem> 
         <NavItem><b>SAVE</b></NavItem> 
