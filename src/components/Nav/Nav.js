@@ -44,33 +44,34 @@ export class Navi extends React.Component {
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
-
-      <Nav>
-        <NavDropdown 
-          onMouseEnter = { this.handleOpen.bind(this) }
-          onMouseLeave = { this.handleClose.bind(this) }
-          open={ this.state.isOpen}
-          id="nav-dropdown" 
-          title="Buy"
-        > 
-            <MenuItem ><b>Zipcode Home For Sale</b></MenuItem>
-            <MenuItem divider />
-            <MenuItem>Homes for sale</MenuItem>
-            <MenuItem>Foreclosures</MenuItem>
-            <MenuItem>For sale by owner</MenuItem>
-            <MenuItem>Open houses</MenuItem>        
-        </NavDropdown>
-
-        {headerArr.map(header => <DropDowns header={header}/>)}
-
+      <Navbar.Collapse>
         <Nav>
-          <NavItem id="Nav-top-right1" href="#">List your rental</NavItem>
-          <NavItem id="Nav-top-right2" href="#">Advertise</NavItem>
-          <NavItem id="Nav-top-right3" href="#">Sign in</NavItem>
-          <NavItem id="Nav-top-right3" href="#">Join</NavItem>
+          <NavDropdown 
+            onMouseEnter = { this.handleOpen.bind(this) }
+            onMouseLeave = { this.handleClose.bind(this) }
+            open={ this.state.isOpen}
+            id="nav-dropdown" 
+            title="Buy"
+          > 
+              <MenuItem ><b>Zipcode Home For Sale</b></MenuItem>
+              <MenuItem divider />
+              <MenuItem>Homes for sale</MenuItem>
+              <MenuItem>Foreclosures</MenuItem>
+              <MenuItem>For sale by owner</MenuItem>
+              <MenuItem>Open houses</MenuItem>        
+          </NavDropdown>
 
+          {headerArr.map(header => <DropDowns header={header}/>)}
+
+          <Nav>
+            <NavItem id="Nav-top-right1" href="#">List your rental</NavItem>
+            <NavItem id="Nav-top-right2" href="#">Advertise</NavItem>
+            <NavItem id="Nav-top-right3" href="#">Sign in</NavItem>
+            <NavItem id="Nav-top-right3" href="#">Join</NavItem>
+
+          </Nav>
         </Nav>
-      </Nav>
+      </Navbar.Collapse>
       </Navbar>
     )
   }  

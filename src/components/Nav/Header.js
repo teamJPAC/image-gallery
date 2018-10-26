@@ -14,24 +14,6 @@ const dropDownOptions = {
 };
 
 export class Navi extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = { isOpen: false }
-  }
-
-  handleOpen() {
-    this.setState({
-      isOpen: true
-    })
-  }
-
-  handleClose() {
-    this.setState({
-      isOpen: false
-    })
-  }
-
   render() {
     return (
       <header className="Main-Nav-Header">
