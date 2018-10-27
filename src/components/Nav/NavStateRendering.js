@@ -36,11 +36,9 @@ export class Navi extends React.Component {
     return (
       <Navbar className="navbar" collapseOnSelect>
         <Navbar.Header>
-          <Navbar.Brand>
-           
+          <Navbar.Brand>  
               <img style={{width: 100, height: 100}} src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" href="#home"/>
-              {/* <span style={{"textAlign": "center"}}>Zill-Woah!</span> */}
-         
+              {/* <span style={{"textAlign": "center"}}>Zill-Woah!</span> */}   
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

@@ -3,9 +3,9 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
 const galleryStyle = {
-  // display: 'flex',
+  display: 'flex',
   'flexDirection': 'row',
-  // 'flex-wrap': 'wrap'
+  'flexWrap': 'wrap'
 };
 
 export default class Gallery extends React.Component {

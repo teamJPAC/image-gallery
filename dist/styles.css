@@ -6,7 +6,9 @@
   width: 100%;
 
 }
-
+.navbar {
+  margin-bottom: -50px;
+}
 #Nav-top-right1, #Nav-top-right2, #Nav-top-right3 {
   color:#0074e4;
 }
@@ -28,4 +30,29 @@
 
 #nav-top-header {
   background-color: white;
+}
+
+/* .logo {
+
+  width: 100px;
+  height: 100px;
+
+} */
+
+/* #brand
+{
+  position: relative;
+  width: 100px;
+  z-index: 10;
+  height: 100px;
+  background-color:black;
+} */
+
+#brand
+{
+  position: relative;
+  width: 100px;
+  z-index: 10;
+  height: 100px;
+  background-color:black;
 }
