@@ -10,14 +10,13 @@ export default class App extends React.Component {
   }
   
   render(){
-    return(
+    return (
       <div className="main-wrapper">
-        <div className="navbar-header">
-          </div>
+        <div className="navbar-header"></div>
           <Navbar className="navbar">
         <Navbar.Header>
           <Navbar.Brand>    
-              <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" href="#home" />      
+            <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" href="#home" />      
           </Navbar.Brand>
         </Navbar.Header>
         <Navi id="nav-top-header" /> 

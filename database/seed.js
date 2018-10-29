@@ -1,37 +1,25 @@
 const faker = require('faker');
 const Gallery = require('./Gallery.js');
 const db = require('./index.js');
+const mongoose = require('mongoose');
 
-const seed = [
-  {
-    imgURL: "https://s3.amazonaws.com/uifaces/faces/twitter/kuldarkalvik/128.jpg",
-    description: "House",
-    address: "8696 Weed Willows Ave, Las Vegas, NV 89178"
-  },
-  {
-    imgURL: "https://s3.amazonaws.com/uifaces/faces/twitter/kuldarkalvik/128.jpg",
-    description: "House",
-    address: "8696 Weed Willows Ave, Las Vegas, NV 89178"
-  },
-  {
-    imgURL: "https://s3.amazonaws.com/uifaces/faces/twitter/kuldarkalvik/128.jpg",
-    description: "House",
-    address: "8696 Weed Willows Ave, Las Vegas, NV 89178"
-  },
-  {
-    imgURL: "https://s3.amazonaws.com/uifaces/faces/twitter/kuldarkalvik/128.jpg",
-    description: "House",
-    address: "8696 Weed Willows Ave, Las Vegas, NV 89178"
-  },
-]
+
+const seed = Array.from({ length: 100 }, () => {
+  return {
+    imageUrl: faker.image.city(),
+    address: faker.address.streetAddress(),
+    zipcode: faker.address.zipCode(),
+    city: faker.address.city(),
+    State: faker.address.state(),
+  }
+})
 
 const insertDb = () => {
   Gallery.create(seed)
-    .then(()=> db.disconnect())
-    .catch(err => console.log('error: ', err);
+    .then(()=> mongoose.connection.close())
+    .catch(err => console.log('error: ', err));
 };
 
 insertDb();
 
 module.exports = seed;
-
