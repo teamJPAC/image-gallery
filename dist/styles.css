@@ -7,7 +7,8 @@
 
 }
 .navbar {
-  margin-bottom: -50px;
+  margin-bottom: 0px;
+
 }
 #Nav-top-right1, #Nav-top-right2, #Nav-top-right3 {
   color:#0074e4;
@@ -51,8 +52,28 @@
 #brand
 {
   position: relative;
+  bottom: 14px;
+  left: 25px;
   width: 100px;
   z-index: 10;
   height: 100px;
   background-color:black;
+}
+
+.Nav-top-bar-header{
+  font: 16px;
+}
+
+
+
+#nav-top-main-right {
+  margin-left: 100px;
+}
+
+#nav-toolbar-list {
+  margin-left: 120px;
+}
+
+.navbar {
+  border:0;
 }

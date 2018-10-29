@@ -10,6 +10,7 @@
   "scripts": {
     "test": "jest src/spec/App.test.js",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "server-dev": "nodemon server/server.js",
     "db:setup": "node database/seed.js"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "express": "^4.16.4",
     "faker": "^4.1.0",
     "jest": "^23.6.0",
     "mongoose": "^5.3.7",

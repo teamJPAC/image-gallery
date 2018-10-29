@@ -29,7 +29,7 @@ export class Navi extends React.Component {
       <Navbar.Collapse>
         <Nav>
           {headerArr.map(header => <DropDowns header={header}/>)}
-          <Nav>
+          <Nav id="nav-top-main-right">
             <NavItem id="Nav-top-right1" href="#">List your rental</NavItem>
             <NavItem id="Nav-top-right2" href="#">Advertise</NavItem>
             <NavItem id="Nav-top-right3" href="#">Sign in</NavItem>

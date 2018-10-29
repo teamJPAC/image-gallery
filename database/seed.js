@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const seed = Array.from({ length: 100 }, () => {
   return {
-    imageUrl: faker.image.city(),
+    imageUrl: Array.from({ length: 20 }, () => { faker.image.city() }),
     address: faker.address.streetAddress(),
     zipcode: faker.address.zipCode(),
     city: faker.address.city(),

@@ -7,25 +7,43 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton, Image } fr
 export default class App extends React.Component {
   constructor(props){
     super(props);
+
+    this.state={
+      images: []
+    }
   }
-  
+
+  // componentDidMount() {
+  //   $.get('/', result => {
+  //     this.setState({
+  //       images: result
+  //     })
+  //   })
+  // }
+
   render(){
     return (
       <div className="main-wrapper">
         <div className="navbar-header"></div>
-          <Navbar className="navbar">
+
+      <Navbar className="navbar">
         <Navbar.Header>
           <Navbar.Brand>    
-            <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" href="#home" />      
+            <a href="#">
+              <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" />
+            </a> 
           </Navbar.Brand>
         </Navbar.Header>
+
         <Navi id="nav-top-header" /> 
 
         </Navbar>
-            {/* <img class="logo" src={"https://avatars3.githubusercontent.com/u/476233?s=200&v=4"}/>    */}
-            <Toolbar />  
-            <Gallery/>
-          </div>
+        <Toolbar />
+        <div id="property-info-navbar">
+          Public View
+        </div>  
+        <Gallery/>
+      </div>
     )
   };
 };

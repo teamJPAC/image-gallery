@@ -12,7 +12,7 @@ const dropDownOptions = {
 };
 const DropDowns = ({header}) => {
   return (
-  <NavDropdown title={header}>
+  <NavDropdown className="Nav-top-bar-header" title={header}>
             <MenuItem ><b>Zipcode Home For Rent</b></MenuItem>
             <MenuItem divider />
             <MenuItem>Rental Buildings</MenuItem>
