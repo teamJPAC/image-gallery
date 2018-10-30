@@ -13,7 +13,7 @@ const dropDownOptions = {
   'More': headerArr,
 };
 
-export class Navi extends React.Component {
+export class TopNav extends React.Component {
   render() {
     return (
       <Navbar className="navbar" collapseOnSelect>
@@ -42,4 +42,4 @@ export class Navi extends React.Component {
   }  
 }
 
-export default Navi;
+export default TopNav;

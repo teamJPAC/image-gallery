@@ -1,5 +1,5 @@
 import React from 'react';
-import Navi from '../src/components/Nav/Nav.js';
+import TopNav from '../src/components/Nav/TopNav.js';
 import SubNav from '../src/components/Nav/SubNav.js';
 import Gallery from '../src/components/Gallery/Gallery.js';
 import PropertyInfo from '../src/components/Nav/PropertyInfo.js';
@@ -36,7 +36,7 @@ export default class App extends React.Component {
           </Navbar.Brand>
         </Navbar.Header>
 
-        <Navi id="nav-top-header" /> 
+        <TopNav id="nav-top-header" /> 
 
         </Navbar>
         <SubNav />

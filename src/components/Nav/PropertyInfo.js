@@ -16,18 +16,17 @@ const PropertyInfo = () => {
         <ul className="propertyInfo-bar">
           <li>
             <a className="public-View" href="#">
-             Public View`
+             Public View
             </a>
             
-            
-		        <a><span style= {{'float':'right'}}>{propInfoObj.address}</span></a>
-		        <a><span style= {{'float':'right'}}>{propInfoObj.zipcode}</span></a>
-		        <a><span style= {{'float':'right'}}>{propInfoObj.city}</span></a>
-		        <a><span style= {{'float':'right'}}>{propInfoObj.state}</span></a>
+		        <a><span>{propInfoObj.address}</span></a>
+		        <a><span>{propInfoObj.zipcode}</span></a>
+		        <a><span>{propInfoObj.city}</span></a>
+		        <a><span>{propInfoObj.state}</span></a>
           </li>
 
         </ul>
-        
+
       </div>
     )
 

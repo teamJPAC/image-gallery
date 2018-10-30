@@ -105,4 +105,23 @@
 
 .propertyInfo-bar > li > a > span {
   margin-right: 10px;
+  float: right;
 }
+
+.glyphicon {
+  border: 1px solid #fff;
+  height: 50px;
+  display: flex;
+  background-color: #333;
+}
+/*.glyphicon-chevron-right {
+  border: 1px solid #fff;
+  height: 50px;
+  display: flex;
+  background-color: #333;
+
+}*/
+.carousel-control {
+  width:2%;
+}
+
