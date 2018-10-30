@@ -108,12 +108,12 @@
   float: right;
 }
 
-.glyphicon {
+/*.glyphicon {
   border: 1px solid #fff;
   height: 50px;
   display: flex;
   background-color: #333;
-}
+}*/
 /*.glyphicon-chevron-right {
   border: 1px solid #fff;
   height: 50px;
@@ -125,3 +125,16 @@
   width:2%;
 }
 
+.carousel-control .glyphicon{
+  border: 1px solid #fff;
+  align-items: center;
+  height: 50px;
+  width: 35px;
+  display: flex;
+  background-color: #333;
+}
+
+.carousel-control .glyphicon:hover{
+
+ color: #7BC0FF;
+}

@@ -4,14 +4,6 @@ import DropDowns from './DropDowns';
 // import './Nav.css';
 
 const headerArr = ["Buy", "Rent", "Sell", "Mortgages", "Agent finder", "More"];
-const dropDownOptions = {
-  'Buy': headerArr,
-  'Rent': headerArr,
-  'Sell': headerArr,
-  'Mortgages': headerArr,
-  'Agent finder': headerArr,
-  'More': headerArr,
-};
 
 export class TopNav extends React.Component {
   render() {

@@ -6,6 +6,8 @@ export default class Gallery extends React.Component {
   constructor() {
     super()
     this.state = {
+      initial: true,
+      final: false,
       images: [
         {id: 1, url: "https://s3.amazonaws.com/uifaces/faces/twitter/kuldarkalvik/128.jpg" },
         {id: 2, url: "https://s3.amazonaws.com/uifaces/faces/twitter/danvernon/128.jpg" },
@@ -20,11 +22,16 @@ export default class Gallery extends React.Component {
     }
   };
 
+  handleClick() {
+    altert(`selected=${selectedIndex}, direction=${e.direction}`);
+
+  }
+
   render() {
     const gallery = this.state.images;
     return (
-      <Carousel interval={null} indicators={false}>
-        <Carousel.Item>
+      <Carousel interval={null} indicators={false} slide={false} prevIcon={false}>
+        <Carousel.Item  >
           <table>
             <tr>
               <td>
