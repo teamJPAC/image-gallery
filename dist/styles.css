@@ -61,7 +61,9 @@
 }
 
 .Nav-top-bar-header{
-  font: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: Gotham,gotham,Verdana,sans-serif;
 }
 
 
@@ -76,4 +78,31 @@
 
 .navbar {
   border:0;
+}
+.propertyInfo-main {
+  position: relative;
+  vertical-align: top;
+  padding: 15px;
+}
+
+.propertyInfo-bar {
+  list-style: none;
+  padding: 6px;
+  border-bottom: 1px solid #ccc;
+}
+
+.public-View {
+  font-size: 20px;
+  color: #0074e4;
+  border-bottom: 2px solid #0074e4;
+  padding: 0 0 10px;
+
+}
+
+.public-View:hover{
+  text-decoration: none;
+}
+
+.propertyInfo-bar > li > a > span {
+  margin-right: 10px;
 }

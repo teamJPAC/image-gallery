@@ -2,8 +2,6 @@ import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
 // import './Nav.css';
 
-// const headerArr = ["Buy", "Rent", "Sell", "Mortgages", "Agent finder", "More"];
-
 const SubNav = () => {
 
     return (

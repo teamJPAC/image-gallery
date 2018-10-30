@@ -1,7 +1,8 @@
 import React from 'react';
-import Navi from '../src/components/Nav/Nav.js'
-import Toolbar from '../src/components/Nav/SubNav.js'
-import Gallery from '../src/components/Gallery/Gallery'
+import Navi from '../src/components/Nav/Nav.js';
+import SubNav from '../src/components/Nav/SubNav.js';
+import Gallery from '../src/components/Gallery/Gallery.js';
+import PropertyInfo from '../src/components/Nav/PropertyInfo.js';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton, Image } from 'react-bootstrap';
 
 export default class App extends React.Component {
@@ -38,10 +39,8 @@ export default class App extends React.Component {
         <Navi id="nav-top-header" /> 
 
         </Navbar>
-        <Toolbar />
-        <div id="property-info-navbar">
-          Public View
-        </div>  
+        <SubNav />
+        <PropertyInfo />
         <Gallery/>
       </div>
     )
@@ -49,3 +48,7 @@ export default class App extends React.Component {
 };
 
 //pageYOffset
+
+ // <div id="property-info-navbar">
+        //   Public View
+        // </div> 
