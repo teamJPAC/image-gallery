@@ -3,8 +3,10 @@ import TopNav from '../src/components/Nav/TopNav.js';
 import SubNav from '../src/components/Nav/SubNav.js';
 import Gallery from '../src/components/Gallery/Gallery.js';
 import PropertyInfo from '../src/components/Nav/PropertyInfo.js';
+import LightBox from '../src/components/Gallery/LightBox.js';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton, Image } from 'react-bootstrap';
-
+import ImageGallery from '../src/components/Gallery/ImageGallery.js';
+import axios from 'axios';
 export default class App extends React.Component {
   constructor(props){
     super(props);
@@ -14,13 +16,27 @@ export default class App extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   $.get('/', result => {
-  //     this.setState({
-  //       images: result
-  //     })
-  //   })
-  // }
+  componentDidMount() {
+    let imageId = Number(window.location.pathname.replace(/\//, ''));
+    if (imageId >= 0 && imageId <= 100) {
+      axios.get(`/photos/${imageId}`, result => {
+        console.log('result is ', result);
+        this.setState({
+          images: result
+        })
+      })
+    } else {
+      axios.get('/', result => {
+        this.setState({
+          images: result
+        })
+      })
+    }
+  
+
+    
+    console.log('this.state.images is ', this.state.images)
+  }
 
   render(){
     return (
@@ -41,14 +57,26 @@ export default class App extends React.Component {
         </Navbar>
         <SubNav />
         <PropertyInfo />
+     
         <Gallery/>
+        
       </div>
     )
   };
 };
 
-//pageYOffset
+// //pageYOffset
 
- // <div id="property-info-navbar">
-        //   Public View
-        // </div> 
+//  // <div id="property-info-navbar">
+//         //   Public View
+//         // </div> 
+
+// import React from 'react';
+// import ImageGallery from '../src/components/Gallery/ImageGallery.js';
+// export default class App extends React.Component {
+//   render() {
+//     return (
+//       <ImageGallery/>
+//     )
+//   }
+// }

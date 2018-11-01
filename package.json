@@ -1,5 +1,5 @@
 {
-  "name": "Image-Gallery-Service",
+  "name": "Product-Image-Gallery-Service",
   "version": "1.0.0",
   "description": "Image-Gallery-Service",
   "author": "Jack Li",
@@ -9,8 +9,8 @@
   },
   "scripts": {
     "test": "jest src/spec/App.test.js",
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "server-dev": "nodemon server/server.js",
+    "start": "webpack -d --watch",
+    "server-dev": "nodemon server/index.js",
     "db:setup": "node database/seed.js"
   },
   "dependencies": {
@@ -24,9 +24,11 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "axios": "^0.18.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
@@ -35,7 +37,9 @@
     "jest": "^23.6.0",
     "mongoose": "^5.3.7",
     "react-image-lightbox": "^5.0.0",
+    "react-slick": "^0.23.2",
     "regenerator-runtime": "^0.12.1",
+    "slick-carousel": "^1.8.1",
     "webpack": "^4.23.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
