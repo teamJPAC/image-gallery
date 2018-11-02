@@ -12,8 +12,8 @@ const dropDownOptions = {
 };
 const DropDowns = ({header}) => {
   return (
-  <NavDropdown className="Nav-top-bar-header" title={header}>
-            <MenuItem ><b>Zipcode Home For Rent</b></MenuItem>
+  <NavDropdown className="Nav-top-bar-header" id="dropdowns-list" title={header}>
+            <MenuItem><b>Zipcode Home For Rent</b></MenuItem>
             <MenuItem divider />
             <MenuItem>Rental Buildings</MenuItem>
             <MenuItem>Apartments for rent</MenuItem>

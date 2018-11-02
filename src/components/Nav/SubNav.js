@@ -10,7 +10,7 @@ const SubNav = () => {
         <NavItem><b>CONTACT AGENT</b></NavItem> 
         <NavItem><b>SAVE</b></NavItem> 
         <NavItem><b>SHARE</b></NavItem>
-        <NavDropdown style={{fontWeight: 'bold'}} title="MORE">
+        <NavDropdown style={{fontWeight: 'bold'}} title="MORE" id="SubNav-dropdowns">
             {/* {headerArr.map(header => <MenuItem>{header}</MenuItem>)} */}
             <MenuItem >Print</MenuItem> 
             <MenuItem >Get New Listings In Email</MenuItem>

@@ -4,18 +4,29 @@ import { Carousel } from 'react-bootstrap';
 // import LightBox from './LightBox.js';
 import Lightbox from 'react-image-lightbox';
 
-const faker = require('faker');
+// const faker = require('faker');
 
-const imageStorage = () => {
-  let arr = [];
-  for (let i = 0; i < 25; i++) {
-    arr.push({url: faker.image.avatar()})
-  }
-  return arr;
-}
+// const imageStorage = () => {
+//   let arr = [];
+//   for (let i = 0; i < 25; i++) {
+//     arr.push({url: faker.image.avatar()})
+//   }
+//   return arr;
+// }
 
-const images = imageStorage();
-
+// const images = imageStorage();
+const images = [
+        {id: 1, url: "https://s3-us-west-1.amazonaws.com/homedetails/houseSample1/1.jpg" },
+        {id: 1, url: "https://s3-us-west-1.amazonaws.com/homedetails/houseSample1/2.jpg" },
+        {id: 2, url: "https://s3.amazonaws.com/uifaces/faces/twitter/danvernon/128.jpg" },
+        {id: 3, url: "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg" },
+        {id: 4, url: "https://s3.amazonaws.com/uifaces/faces/twitter/Stievius/128.jpg" },
+        {id: 5, url: "https://s3.amazonaws.com/uifaces/faces/twitter/osmanince/128.jpg" },
+        {id: 6, url: "https://s3.amazonaws.com/uifaces/faces/twitter/nckjrvs/128.jpg" },
+        {id: 1, url: "https://s3.amazonaws.com/uifaces/faces/twitter/kuldarkalvik/128.jpg" },
+        {id: 4, url: "https://s3.amazonaws.com/uifaces/faces/twitter/Stievius/128.jpg" },
+        {id: 3, url: "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg" },
+      ]
 
 // const imagesObj = {
 //   url: Array.from( { length: 25 }, () =>  faker.image.avatar() )
@@ -107,7 +118,7 @@ export default class Gallery extends React.Component {
                 {
                   imagesFirstSlideTRow.map(image => (
                     <td>
-                      <img className="gallery-images" style ={{'padding':'1px'}} width={250} height={250} alt="house" src={image.url}/>
+                      <img className="gallery-images" style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
                     </td>
                   ))
                 }
@@ -117,11 +128,12 @@ export default class Gallery extends React.Component {
                 {
                   imagesFirstSlideBRow.map(image => (
                     <td>
-                      <img style ={{'padding':'1px'}} width={250} height={250} alt="house" src={image.url}/>
+                      <img style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
                     </td>
                   ))
                 }
               </tr>
+          
             </tr>
           </tbody>
           </table>
@@ -134,7 +146,7 @@ export default class Gallery extends React.Component {
               {
                 imagesSecondSlide.map(image => (
                   <td>
-                    <img style ={{'padding':'1px'}} width={250} height={250} alt="house" src={image.url}/>
+                    <img style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
                   </td>
                 ))
               }
@@ -147,7 +159,7 @@ export default class Gallery extends React.Component {
               {
                 imagesSecondSlide.map(image => (
                   <td>
-                    <img style ={{'padding':'1px'}} width={250} height={250} alt="house" src={image.url}/>
+                    <img style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
                   </td>
                 ))
               }
@@ -163,7 +175,7 @@ export default class Gallery extends React.Component {
               {
                 imagesSecondSlide.map(image => (
                   <td>
-                    <img style ={{'padding':'1px'}} width={250} height={250} alt="house" src={image.url}/>
+                    <img style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
                   </td>
                 ))
               }
@@ -176,7 +188,7 @@ export default class Gallery extends React.Component {
               {
                 imagesThirdSlide.map(image => (
                   <td>
-                    <img style ={{'padding':'1px'}} width={250} height={250} alt="house" src={image.url}/>
+                    <img style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
                   </td>
                 ))
               }
@@ -184,6 +196,7 @@ export default class Gallery extends React.Component {
           </tbody>
           </table>             
         </Carousel.Item>
+        
       </Carousel>
     )
   }

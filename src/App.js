@@ -7,19 +7,23 @@ import LightBox from '../src/components/Gallery/LightBox.js';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton, Image } from 'react-bootstrap';
 import ImageGallery from '../src/components/Gallery/ImageGallery.js';
 import axios from 'axios';
+import { debounce } from 'underscore';
+
 export default class App extends React.Component {
   constructor(props){
     super(props);
 
     this.state={
-      images: []
+      images: [],
+      showLogo: true
     }
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
     let imageId = Number(window.location.pathname.replace(/\//, ''));
     if (imageId >= 0 && imageId <= 100) {
-      axios.get(`/photos/${imageId}`, result => {
+      axios.get(`/homes/${imageId}`, result => {
         console.log('result is ', result);
         this.setState({
           images: result
@@ -32,12 +36,14 @@ export default class App extends React.Component {
         })
       })
     }
-  
-
-    
     console.log('this.state.images is ', this.state.images)
   }
 
+  handleScroll() {
+    // const list = ReactDOM.findDOMNode(this.refs.test)
+    // console.log(list)
+    console.log(window.scrollY);
+  }
   render(){
     return (
       <div className="main-wrapper">
@@ -45,9 +51,10 @@ export default class App extends React.Component {
 
       <Navbar className="navbar">
         <Navbar.Header>
-          <Navbar.Brand>    
+          <Navbar.Brand> 
             <a href="#">
-              <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" />
+            {console.log(window.scrollY)}
+              <Image onScroll={this.handleScroll} id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" />
             </a> 
           </Navbar.Brand>
         </Navbar.Header>
@@ -80,3 +87,4 @@ export default class App extends React.Component {
 //     )
 //   }
 // }
+//{window.scrollY >= 75 ? "noBrand" : "brand"}
