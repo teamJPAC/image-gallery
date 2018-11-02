@@ -15,9 +15,13 @@ export default class App extends React.Component {
 
     this.state={
       images: [],
-      showLogo: true
+      showLogo: true,
+      height: false,
+      slider:'nav-toolbar-list'
+
     }
-    this.handleScroll = this.handleScroll.bind(this);
+    // this.handleScroll = this.handleScroll.bind(this);
+    this.updateWindowHeight = this.updateWindowHeight.bind(this);
   }
 
   componentDidMount() {
@@ -36,15 +40,47 @@ export default class App extends React.Component {
         })
       })
     }
+    // window.addEventListener('scroll', window.onscroll = () => {console.log(window.scrollY)}
+    // );
     console.log('this.state.images is ', this.state.images)
+    // window.onscroll = () => {
+    //  if (window.scrollY >= 50) {
+    //    this.setState({
+    //      height: true,
+    //      slider: 'nav-toolbar-list-Slide-left'
+    //    })
+    //    console.log("ANIMATION START")   
+    //  } else if (window.scrollY > 0 || window.scrollY < 50) {
+    //   this.setState({
+    //     height: false,
+    //     slider: 'nav-toolbar-list-Slide-right'
+    //   })
+    //  }
+    // }
+    this.updateWindowHeight()
   }
 
-  handleScroll() {
-    // const list = ReactDOM.findDOMNode(this.refs.test)
-    // console.log(list)
-    console.log(window.scrollY);
+  updateWindowHeight() {
+    window.onscroll = () => {
+      if (window.scrollY >= 50) {
+        this.setState({
+          height: true,
+          slider: 'nav-toolbar-list-Slide-left'
+        })
+        console.log("ANIMATION START")   
+      } else if (window.scrollY > 0 || window.scrollY < 50) {
+       this.setState({
+         height: false,
+         slider: 'nav-toolbar-list-Slide-right'
+       })
+      }
+     }
   }
+
+
   render(){
+    const {height, slider} = this.state
+
     return (
       <div className="main-wrapper">
         <div className="navbar-header"></div>
@@ -53,16 +89,15 @@ export default class App extends React.Component {
         <Navbar.Header>
           <Navbar.Brand> 
             <a href="#">
-            {console.log(window.scrollY)}
-              <Image onScroll={this.handleScroll} id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" />
+              <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" />
             </a> 
           </Navbar.Brand>
         </Navbar.Header>
 
-        <TopNav id="nav-top-header" /> 
+        <TopNav /> 
 
         </Navbar>
-        <SubNav />
+        <SubNav height={height} slider={slider} />
         <PropertyInfo />
      
         <Gallery/>
@@ -88,3 +123,6 @@ export default class App extends React.Component {
 //   }
 // }
 //{window.scrollY >= 75 ? "noBrand" : "brand"}
+
+//position: fixed
+// Yposition : 50 

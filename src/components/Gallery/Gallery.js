@@ -133,7 +133,86 @@ export default class Gallery extends React.Component {
                   ))
                 }
               </tr>
-          
+              
+              <tr>
+                {
+                  imagesFirstSlideTRow.map(image => (
+                    <td>
+                      <img className="gallery-images" style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
+                    </td>
+                  ))
+                }
+              </tr>
+
+              <tr>
+                {
+                  imagesFirstSlideBRow.map(image => (
+                    <td>
+                      <img style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
+                    </td>
+                  ))
+                }
+              </tr>
+
+              <tr>
+                {
+                  imagesFirstSlideTRow.map(image => (
+                    <td>
+                      <img className="gallery-images" style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
+                    </td>
+                  ))
+                }
+              </tr>
+
+              <tr>
+                {
+                  imagesFirstSlideBRow.map(image => (
+                    <td>
+                      <img style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
+                    </td>
+                  ))
+                }
+              </tr>
+
+              <tr>
+                {
+                  imagesFirstSlideTRow.map(image => (
+                    <td>
+                      <img className="gallery-images" style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
+                    </td>
+                  ))
+                }
+              </tr>
+
+              <tr>
+                {
+                  imagesFirstSlideBRow.map(image => (
+                    <td>
+                      <img style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
+                    </td>
+                  ))
+                }
+              </tr>
+
+              <tr>
+                {
+                  imagesFirstSlideTRow.map(image => (
+                    <td>
+                      <img className="gallery-images" style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
+                    </td>
+                  ))
+                }
+              </tr>
+
+              <tr>
+                {
+                  imagesFirstSlideBRow.map(image => (
+                    <td>
+                      <img style ={{'padding':'1px'}} width={300} height={250} alt="house" src={image.url}/>
+                    </td>
+                  ))
+                }
+              </tr>
             </tr>
           </tbody>
           </table>

@@ -8,7 +8,7 @@ const headerArr = ["Buy", "Rent", "Sell", "Mortgages", "Agent finder", "More"];
 export class TopNav extends React.Component {
   render() {
     return (
-      <Navbar className="navbar" collapseOnSelect>
+      <Navbar className="navbar-main" collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
            
@@ -20,7 +20,7 @@ export class TopNav extends React.Component {
         </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          {headerArr.map(header => <DropDowns id ="dropdowns-List" header={header}/>)}
+          {headerArr.map(header => <DropDowns header={header}/>)}
           <Nav id="nav-top-main-right">
             <NavItem id="Nav-top-right1" href="#">List your rental</NavItem>
             <NavItem id="Nav-top-right2" href="#">Advertise</NavItem>
