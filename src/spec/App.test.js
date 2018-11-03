@@ -13,9 +13,11 @@ describe('App', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  test('should contain Nav and subNav Component', () => {
-    expect(wrapper.find('Nav').length).toBe(1);
-    expect(wrapper.find('SubNav').length).toBe(1);
+  test('should contain the necessary components', () => {
+    expect(wrapper.find('TopNav').length).toBe(1);
+    expect(wrapper.find('NavToolbar').length).toBe(1);
     expect(wrapper.find('Gallery').length).toBe(1);
   })
+
+  
 });

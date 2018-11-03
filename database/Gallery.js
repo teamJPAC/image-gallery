@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const db = require ('./index.js');
 
 const gallerySchema = new mongoose.Schema({
-  _id: Number,
+  id: Number,
   imageUrl: [String],
   address: String,
   zipcode: String,

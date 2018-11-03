@@ -12,9 +12,9 @@ app.get('/:something', (req, res) => {
 	res.sendFile(path.join(`${__dirname}/../dist/index.html`));
 });
 
-app.get('/homes/:urlId', (req, res) => {
-	console.log('req.params.urlId is ', req.params.urlId)
-	Galleries.find({urlId: req.params.urlId}, (err, data) => {
+app.get('/homes/:id', (req, res) => {
+	console.log('req.params.urlId is ', req.params.id)
+	Galleries.find({id: req.params.id}, (err, data) => {
 		console.log('data is ', data);
 		if (err) {
 			console.log("Error: ", err);

@@ -1,66 +1,66 @@
-import Slider from 'react-slick';
-import Lightbox from 'react-image-lightbox';
-import React from 'react';
+// import Slider from 'react-slick';
+// import Lightbox from 'react-image-lightbox';
+// import React from 'react';
 
-export default class Sliders extends React.Component{
-  constructor(props){
-    super(props);
+// export default class Sliders extends React.Component{
+//   constructor(props){
+//     super(props);
 
-    this.state = {
-      images: [	
-        "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg",
-        "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg",
-        "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg",
-        "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg"
-      ],
-      current: ''
-    }
-  }
+//     this.state = {
+//       images: [	
+//         "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg",
+//         "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg",
+//         "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg",
+//         "https://s3.amazonaws.com/uifaces/faces/twitter/jeremiaha/128.jpg"
+//       ],
+//       current: ''
+//     }
+//   }
 
-  getSliderSettings(){
-   return {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
-   }
-  }
+//   getSliderSettings(){
+//    return {
+//       dots: true,
+//       infinite: true,
+//       speed: 500,
+//       slidesToShow: 1,
+//       slidesToScroll: 1
+//    }
+//   }
 
-  handleClickImage(e, image) {
+//   handleClickImage(e, image) {
 
-   this.setState({
-     current: image
-   })
-  }
+//    this.setState({
+//      current: image
+//    })
+//   }
 
-  handleCloseModal() {
+//   handleCloseModal() {
 
-   this.setState({
-     current: ''
-   })
-  }
+//    this.setState({
+//      current: ''
+//    })
+//   }
 
-  render(){
-   const settings = this.getSliderSettings();
-   const { images, current } = this.state;
+//   render(){
+//    const settings = this.getSliderSettings();
+//    const { images, current } = this.state;
 
-   return (
-     <div>
-      <Slider {...settings}>
-        { images.map(image => (
-           <img src={image} onClick={ e => this.handleClickImage(e, image)}  />
+//    return (
+//      <div>
+//       <Slider {...settings}>
+//         { images.map(image => (
+//            <img src={image} onClick={ e => this.handleClickImage(e, image)}  />
 
-        ))} 
-      </Slider>
+//         ))} 
+//       </Slider>
 
-      {current &&
-         <Lightbox
-            mainSrc={current}
-            onCloseRequest={this.handleCloseModal}
-            />
-      }
-    </div>
-   )
-  }
-}
+//       {current &&
+//          <Lightbox
+//             mainSrc={current}
+//             onCloseRequest={this.handleCloseModal}
+//             />
+//       }
+//     </div>
+//    )
+//   }
+// }

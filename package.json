@@ -24,6 +24,7 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "aws-sdk": "^2.348.0",
     "axios": "^0.18.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
@@ -34,18 +35,24 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "express": "^4.16.4",
     "faker": "^4.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
     "mongoose": "^5.3.7",
     "react-image-lightbox": "^5.0.0",
     "react-slick": "^0.23.2",
     "regenerator-runtime": "^0.12.1",
     "slick-carousel": "^1.8.1",
+    "style-loader": "^0.23.1",
     "underscore": "^1.9.1",
     "webpack": "^4.23.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>src/spec/setupTests.js"
+    "setupTestFrameworkScriptFile": "<rootDir>src/spec/setupTests.js",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    }
   }
 }
