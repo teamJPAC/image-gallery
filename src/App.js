@@ -54,10 +54,7 @@ export default class App extends React.Component {
 
   render(){
     const {height, slider,propInfo} = this.state
-    console.log('propInfo is ', propInfo)
     if (propInfo.length) {
-      console.log('if statement LITERALLY')
-
       return (
         <div className="main-wrapper">
           <Navbar className="navbar">
@@ -68,20 +65,16 @@ export default class App extends React.Component {
                 </a> 
               </Navbar.Brand>
             </Navbar.Header>
-  
             <TopNav /> 
           </Navbar>
-  
           <NavToolbar height={height} slider={slider} />
           <PropertyInfo />  
           <Gallery img={this.state.propInfo[0].imageUrl}/> 
-          
         </div>
       )
     } else {
-      console.log('else statement LITERALLY')
       return (
-        <div>Loading...</div>
+        <div id="loading-page">Loading...</div>
       )
     }
     

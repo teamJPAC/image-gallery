@@ -10,26 +10,22 @@ const propInfoObj = {
 }
 
 const PropertyInfo = () => {
-
-    return (
-      <div className="propertyInfo-main">
-        <ul className="propertyInfo-bar">
-          <li>
-            <a className="public-View" href="#">
-             Public View
-            </a>
-            
-		        <a><span>{propInfoObj.address}</span></a>
-		        <a><span>{propInfoObj.zipcode}</span></a>
-		        <a><span>{propInfoObj.city}</span></a>
-		        <a><span>{propInfoObj.state}</span></a>
-          </li>
-
-        </ul>
-
-      </div>
-    )
-
+  return (
+    <div className="propertyInfo-main">
+      <ul className="propertyInfo-bar">
+        <li>
+          <a className="public-View" href="#">
+            Public View
+          </a>
+          
+          <a><span>{propInfoObj.address}</span></a>
+          <a><span>{propInfoObj.zipcode}</span></a>
+          <a><span>{propInfoObj.city}</span></a>
+          <a><span>{propInfoObj.state}</span></a>
+        </li>
+      </ul>
+    </div>
+  )
 }
 
 export default PropertyInfo;

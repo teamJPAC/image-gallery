@@ -65,7 +65,7 @@ export class Navi extends React.Component {
             <NavItem id="Nav-top-right1" href="#">List your rental</NavItem>
             <NavItem id="Nav-top-right2" href="#">Advertise</NavItem>
             <NavItem id="Nav-top-right3" href="#">Sign in</NavItem>
-            <NavItem id="Nav-top-right3" href="#">Join</NavItem>
+            <NavItem id="Nav-top-right4" href="#">Join</NavItem>
 
           </Nav>
         </Nav>
