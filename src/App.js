@@ -3,10 +3,10 @@ import TopNav from '../src/components/Nav/TopNav.js';
 import NavToolbar from './components/Nav/NavToolbar.js';
 import Gallery from '../src/components/Gallery/Gallery.js';
 import PropertyInfo from '../src/components/Nav/PropertyInfo.js';
+import Logo from '../src/components/Nav/Logo.js'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton, Image } from 'react-bootstrap';
 import ImageGallery from '../src/components/Gallery/ImageGallery.js';
 import axios from 'axios';
-// import { debounce } from 'underscore';
 
 export default class App extends React.Component {
   constructor(props){
@@ -14,7 +14,6 @@ export default class App extends React.Component {
 
     this.state={
       propInfo: [],
-      showLogo: true,
       height: false,
       slider:'nav-toolbar-list'
     }
@@ -24,6 +23,7 @@ export default class App extends React.Component {
   componentDidMount() {
     let imageId = Number(window.location.pathname.replace(/\//, ''));
     imageId = imageId % 100;
+    console.log('imageId is ', imageId)
     if (imageId >= 0 && imageId <= 100) {
       axios.get(`/homes/${imageId}`).then(result => {
           console.log('result is ', result);
@@ -53,23 +53,16 @@ export default class App extends React.Component {
   }
 
   render(){
-    const {height, slider,propInfo} = this.state
+    const {height, slider, propInfo} = this.state
+    console.log('propInfo, ', propInfo)
     if (propInfo.length) {
       return (
         <div className="main-wrapper">
-          <Navbar className="navbar">
-            <Navbar.Header>
-              <Navbar.Brand> 
-                <a href="/">
-                  <Image id="brand" src="https://avatars3.githubusercontent.com/u/476233?s=200&v=4" />
-                </a> 
-              </Navbar.Brand>
-            </Navbar.Header>
-            <TopNav /> 
-          </Navbar>
+          <Logo />
           <NavToolbar height={height} slider={slider} />
-          <PropertyInfo />  
-          <Gallery img={this.state.propInfo[0].imageUrl}/> 
+          <PropertyInfo info={propInfo[0]} />
+          {console.log('checking',this.state.propInfo)}  
+          <Gallery img={propInfo[0].imageUrl}/> 
         </div>
       )
     } else {
@@ -81,22 +74,3 @@ export default class App extends React.Component {
   };
 };
 
-// //pageYOffset
-
-//  // <div id="property-info-navbar">
-//         //   Public View
-//         // </div> 
-
-// import React from 'react';
-// import ImageGallery from '../src/components/Gallery/ImageGallery.js';
-// export default class App extends React.Component {
-//   render() {
-//     return (
-//       <ImageGallery/>
-//     )
-//   }
-// }
-//{window.scrollY >= 75 ? "noBrand" : "brand"}
-
-//position: fixed
-// Yposition : 50 

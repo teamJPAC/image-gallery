@@ -3,45 +3,7 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 // import LightBox from './LightBox.js';
 import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
-
-
-// const faker = require('faker');
-
-const imageStorage = () => {
-  let arr = [];
-  for (let i = 0; i < 25; i++) {
-    arr.push({url: faker.image.avatar()})
-  }
-  return arr;
-}
-
-// const images = imageStorage();
-const images = [
-        {id: 1, url: "https://s3-us-west-1.amazonaws.com/homedetails/houseSample1/1.jpg" },
-        {id: 2, url: "https://s3-us-west-1.amazonaws.com/homedetails/houseSample1/2.jpg" },
-        {id: 3, url: "https://photos.zillowstatic.com/p_c/IS2bx3mzfwnrpz0000000000.jpg" },
-        {id: 4, url: "https://photos.zillowstatic.com/p_c/ISu4vr3tbofupz0000000000.jpg" },
-        {id: 5, url: "https://photos.zillowstatic.com/p_c/ISyrbr9guj92v11000000000.jpg" },
-        {id: 6, url: "https://photos.zillowstatic.com/p_c/ISi79reamgkga21000000000.jpg" },
-        {id: 7, url: "https://photos.zillowstatic.com/p_c/ISqx6x0z7aw9811000000000.jpg" },
-        {id: 8, url: "https://photos.zillowstatic.com/p_c/ISyrbr9guj92v11000000000.jpg" },
-        {id: 9, url: "https://photos.zillowstatic.com/p_c/ISqdb3xgqosda21000000000.jpg" },
-        {id: 10, url: "https://photos.zillowstatic.com/p_c/IS6yd3smyrhzu11000000000.jpg" },
-        {id: 11, url: "https://photos.zillowstatic.com/p_c/ISif7393m3t7v11000000000.jpg" },
-        {id: 12, url: "https://photos.zillowstatic.com/p_c/ISi3ir1qmb2bqz0000000000.jpg" },
-        {id: 13, url: "https://photos.zillowstatic.com/p_c/ISu4vr3tbofupz0000000000.jpg" },
-        {id: 14, url: "https://photos.zillowstatic.com/p_c/ISyrbr9guj92v11000000000.jpg" },
-        {id: 15, url: "https://photos.zillowstatic.com/p_c/ISi79reamgkga21000000000.jpg" },
-        {id: 16, url: "https://photos.zillowstatic.com/p_c/ISqx6x0z7aw9811000000000.jpg" },
-        {id: 17, url: "https://photos.zillowstatic.com/p_c/ISyrbr9guj92v11000000000.jpg" },
-        {id: 18, url: "https://photos.zillowstatic.com/p_c/ISqdb3xgqosda21000000000.jpg" },
-        {id: 19, url: "https://photos.zillowstatic.com/p_c/IS6yd3smyrhzu11000000000.jpg" },
-        {id: 20, url: "https://photos.zillowstatic.com/p_c/ISif7393m3t7v11000000000.jpg" },
-        {id: 19, url: "https://photos.zillowstatic.com/p_c/IS6yd3smyrhzu11000000000.jpg" },
-        {id: 20, url: "https://photos.zillowstatic.com/p_c/ISif7393m3t7v11000000000.jpg" },
-
-      ]
+// import 'react-image-lightbox/style.css';
 
 /*
 max 25 images, image[0] = profile, 
@@ -50,21 +12,22 @@ firstslide has profile, 5 images per row , 2 rows
 3rd, same as above
 */
 
+const captions = [
+  'New Construction: $3,328,000 (4 beds, 4 baths, 4,142 sqft)'
+]
 export default class Gallery extends React.Component {
   constructor(props) {
     super(props)
-    console.log('Gallery props.img is ', props.img);
     this.state = {
       current: '',
       isOpen: false,
       index: 0,
       direction: null,
-      profile: images[0].url,
-      imagesFirstSlideTRow: images.slice(1,7),
-      imagesFirstSlideBRow: props.img,
-      imagesSecondSlide: images.slice(10, 20),
-      imagesThirdSlide: images.slice(20)
+      profile: null || props.img[0],
+      images: null || props.img.slice(0, 25),
     }
+    console.log('Gallery props is ', props);
+    console.log('Gallery-images is ', this.state.images)
   };
 
   handleClick(selectedIndex, e) {
@@ -84,8 +47,8 @@ export default class Gallery extends React.Component {
   }
 
   render() {
-    const { isOpen, current, index, direction, imagesSecondSlide, imagesThirdSlide, profile } = this.state;
-    console.log(images[(index + images.length +1) % images.length].url)
+    const { isOpen, current, index, direction, images, imagesThirdSlide, profile } = this.state;
+    console.log('images is ', images.slice(1, 11))
 
     return (
       <Carousel 
@@ -105,9 +68,10 @@ export default class Gallery extends React.Component {
                   onClick={e => this.handleClickImage(e, profile)}/>
                   {
                     isOpen && 
-                    <Lightbox mainSrc={images[index].url} 
-                              nextSrc={images[(index + images.length + 1 ) % images.length].url}
-                              prevSrc={images[(index + images.length - 1) % images.length].url}
+                    <Lightbox mainSrc={images[index]} 
+                              mainSrcThumbnail={images[index]}
+                              nextSrc={images[(index + images.length + 1 ) % images.length]}
+                              prevSrc={images[(index + images.length - 1) % images.length]}
                               onMovePrevRequest={() => 
                                 this.setState({
                                   index: (index + images.length - 1) % images.length
@@ -117,14 +81,16 @@ export default class Gallery extends React.Component {
                                   index: (index + images.length + 1) % images.length
                                 })}
                               onCloseRequest={() => this.setState({ isOpen: false })}
+                              imageTitle={`${index + 1} of ${images.length}`}
+                              imageCaption={captions[0]}
                     />
                   }
             </div>
             <div className="img-side-pictures-container">
-              {
+              { 
                 images.slice(1, 11).map((image, i) => (
                   <div className="home-children-pictures" key={i}>
-                    <img className="gallery-images" alt="house" src={image.url} />
+                    <img className="gallery-images" alt="house" src={image} />
                   </div>
                 ))
               }
@@ -134,12 +100,12 @@ export default class Gallery extends React.Component {
         <Carousel.Item>
           <div className="img-container">
             <div className="img-side-pictures-container">
-              {
-                images.slice(9, 21).map((image, i) => (
+              { 
+                images.slice(9, 24).map((image, i) => (
                   <div className="home-children-pictures" key={i}>
-                    <img className="gallery-images" alt="house" src={image.url}/>
+                    <img className="gallery-images" alt="house" src={image}/>
                   </div>
-                ))
+                )) 
               }
             </div>                      
           </div>

@@ -8,7 +8,8 @@ app.use(express.static(__dirname + '/../dist/'));
 
 let port = 3000;
 
-app.get('/:something', (req, res) => {
+app.get('/', (req, res) => {
+	console.log('hi');
 	res.sendFile(path.join(`${__dirname}/../dist/index.html`));
 });
 
@@ -22,7 +23,6 @@ app.get('/homes/:id', (req, res) => {
 			res.status(200).send(data);
 		}
 	})
-	// res.status(200).send('hi')
 });
 
 
