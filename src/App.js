@@ -19,7 +19,21 @@ export default class App extends React.Component {
     }
     this.updateWindowHeight = this.updateWindowHeight.bind(this);
   }
-
+  // componentDidMount() {
+  //   let imageId = Number(window.location.pathname.replace(/\/product\//, ''));
+  //   imageId = imageId % 100;
+  //   console.log('imageId is ', imageId)
+  //   if (imageId >= 0 && imageId <= 100) {
+  //     axios.get(`/product/${imageId}`).then(result => {
+  //         console.log('result is ', result);
+  //         this.setState({
+  //           propInfo: result.data
+  //         })
+  //         console.log('this.state.propInfo[0] is ', this.state.propInfo[0].imageUrl)
+  //       })
+  //   }
+  //   this.updateWindowHeight();
+  // }
   componentDidMount() {
     let imageId = Number(window.location.pathname.replace(/\//, ''));
     imageId = imageId % 100;
@@ -61,7 +75,6 @@ export default class App extends React.Component {
           <Logo />
           <NavToolbar height={height} slider={slider} />
           <PropertyInfo info={propInfo[0]} />
-          {console.log('checking',this.state.propInfo)}  
           <Gallery img={propInfo[0].imageUrl}/> 
         </div>
       )
