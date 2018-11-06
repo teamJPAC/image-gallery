@@ -12,6 +12,7 @@
     "test: coverage": "jest --verbose --coverage",
     "start": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
+    "generateSampleData": "node database/generateSampleData.js",
     "db:setup": "node database/seed.js"
   },
   "dependencies": {
@@ -43,7 +44,6 @@
     "mongodb-memory-server": "^2.6.2",
     "mongoose": "^5.3.7",
     "react-image-lightbox": "^5.0.0",
-    "react-slick": "^0.23.2",
     "regenerator-runtime": "^0.12.1",
     "slick-carousel": "^1.8.1",
     "style-loader": "^0.23.1",

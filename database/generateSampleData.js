@@ -23,10 +23,13 @@ s3.listObjects(params, (err, data) => {
     console.log(err);
   } else {
     let baseURL = `https://s3-us-west-1.amazonaws.com/homedetails/`;
+   
     let imgArr = [];
-    for (let i = 1; i < data.Contents.length; i++) {
-      imgArr.push(baseURL + data.Contents[i].Key);
-    }
+    
+      for (let i = 1; i <= data.Contents.length; i++) {
+        let randomIndex = Math.floor(Math.random() * data.Contents.length);
+        imgArr.push(baseURL + data.Contents[randomIndex].Key);
+      }
 
     for (let i = 0; i < imgArr.length; i++) {
       let property = {};
@@ -47,28 +50,3 @@ s3.listObjects(params, (err, data) => {
     })
   }
 })
-
-
-
-// console.log(imgArr.length)
-// const seed = Array.from({ length: 1 }, () => {
- 
-//   return {
-//     _id: 1,
-//     imageUrl: imgArr,
-//     address: faker.address.streetAddress(),
-//     zipcode: faker.address.zipCode(),
-//     city: faker.address.city(),
-//     State: faker.address.state(),
-//   }
-// });
-
-// (function insertDb() {
-//   Gallery.create(seed)
-//     .then(()=> mongoose.connection.close())
-//     .catch(err => console.log('error: ', err));
-// })();
-
-// insertDb();
-
-// module.exports = seed;
