@@ -23,18 +23,22 @@ s3.listObjects(params, (err, data) => {
     console.log(err);
   } else {
     let baseURL = `https://s3-us-west-1.amazonaws.com/homedetails/`;
-   
-    let imgArr = [];
-    
+    let generateImagesArr = () => {
+      let imgArr = [];  
       for (let i = 1; i <= data.Contents.length; i++) {
         let randomIndex = Math.floor(Math.random() * data.Contents.length);
+        if (!randomIndex) {
+          randomIndex +=1;
+        }
         imgArr.push(baseURL + data.Contents[randomIndex].Key);
       }
-
-    for (let i = 0; i < imgArr.length; i++) {
+      return imgArr;
+    }
+    
+    for (let i = 0; i < 100; i++) {
       let property = {};
       property.id = i
-      property.imageUrl = imgArr;
+      property.imageUrl = generateImagesArr();
       property.address = faker.address.streetAddress(),
       property.zipcode = faker.address.zipCode(),
       property.city = faker.address.city(),
