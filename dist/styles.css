@@ -53,8 +53,7 @@
 .gallery-images {
   padding: 1px;
   width: 320px;
-  height: 250px
-  
+  height: 250px;
 }
 
 #brand
@@ -73,8 +72,6 @@
   font-weight: 700;
   font-family: Gotham,gotham,Verdana,sans-serif;
 }
-
-
 
 #nav-top-main-right {
   margin-left: 100px;
@@ -112,8 +109,10 @@
   transition: background-color 1s, color 1s;
   background-color: #0074e4;
   color: white;
+  line-height: 25px;
 }
 
+/*Font Awesome Icon */
 .fas, .far {
   padding: 5px;
 }
@@ -149,19 +148,10 @@
   float: right;
 }
 
-/*.glyphicon {
-  border: 1px solid #fff;
-  height: 50px;
-  display: flex;
-  background-color: #333;
-}*/
-/*.glyphicon-chevron-right {
-  border: 1px solid #fff;
-  height: 50px;
-  display: flex;
-  background-color: #333;
+.propertyInfo-bar > li > a:hover {
+  cursor: pointer;
+}
 
-}*/
 .carousel-inner:hover {
   cursor: pointer
 }
