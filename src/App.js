@@ -19,7 +19,6 @@ export default class App extends React.Component {
     }
     this.updateWindowHeight = this.updateWindowHeight.bind(this);
   }
-  
   componentDidMount() {
     let imageId = Number(window.location.pathname.replace(/\//, ''));
     imageId = imageId % 100;
