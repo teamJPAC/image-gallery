@@ -19,34 +19,20 @@ export default class App extends React.Component {
     }
     this.updateWindowHeight = this.updateWindowHeight.bind(this);
   }
-  // componentDidMount() {
-  //   let imageId = Number(window.location.pathname.replace(/\/product\//, ''));
-  //   imageId = imageId % 100;
-  //   console.log('imageId is ', imageId)
-  //   if (imageId >= 0 && imageId <= 100) {
-  //     axios.get(`/product/${imageId}`).then(result => {
-  //         console.log('result is ', result);
-  //         this.setState({
-  //           propInfo: result.data
-  //         })
-  //         console.log('this.state.propInfo[0] is ', this.state.propInfo[0].imageUrl)
-  //       })
-  //   }
-  //   this.updateWindowHeight();
-  // }
+  
   componentDidMount() {
     let imageId = Number(window.location.pathname.replace(/\//, ''));
     imageId = imageId % 100;
     console.log('imageId is ', imageId)
     if (imageId >= 0 && imageId <= 100) {
-      axios.get(`http://localhost:3001/homes/${imageId}`).then(result => {
-          console.log('result is ', result);
+      axios.get(`http://localhost:8081/homes/${imageId}`).then(result => {
+          // console.log('result is ', result);
           this.setState({
             propInfo: result.data
           })
-          console.log('this.state.propInfo[0] is ', this.state.propInfo[0].imageUrl)
+          // console.log('this.state.propInfo[0] is ', this.state.propInfo[0].imageUrl)
         })
-    }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
     this.updateWindowHeight();
   }
 
@@ -68,7 +54,7 @@ export default class App extends React.Component {
 
   render(){
     const {height, slider, propInfo} = this.state
-    console.log('propInfo, ', propInfo)
+    // console.log('propInfo, ', propInfo)
     if (propInfo.length) {
       return (
         <div className="main-wrapper">

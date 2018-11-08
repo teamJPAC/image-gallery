@@ -4,9 +4,11 @@ const Galleries = require('../database/Gallery.js');
 const path = require('path');
 const app = express();
 
+const port = 8081;
+
 app.use(express.static(__dirname + '/../dist/'));
 
-let port = 3001;
+// let port = 3002;
 
 app.get('/:id', (req, res) => {
 	console.log('hi');
@@ -24,7 +26,6 @@ app.get('/homes/:id', (req, res) => {
 		}
 	})
 });
-
 
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);

@@ -5,9 +5,7 @@ const NavToolbar = ({height, slider}) => {
   return (
     <Navbar id="nav-toolbar" fixedTop={height}>
     <Nav id={slider}>  
-      <NavItem id={height ? 'navItem-contact-highlight': 'navItem-contact'}>
-        CONTACT AGENT
-      </NavItem> 
+      <NavItem id={height ? 'navItem-contact-highlight': 'navItem-contact'}>CONTACT AGENT</NavItem> 
       <NavItem><i className="far fa-heart"></i>SAVE</NavItem> 
       <NavItem><i className="fas fa-envelope-square"></i>SHARE</NavItem>
       <NavDropdown title="MORE" id="SubNav-dropdowns">
