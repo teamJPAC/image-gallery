@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.static(__dirname + '/../dist/'));
 
 app.get('/:id', (req, res) => {
-	console.log('initialize page request...');
+	console.log('initializing page request...');
 	res.sendFile(path.join(`${__dirname}/../dist/index.html`));
 });
 
