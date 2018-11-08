@@ -3,17 +3,19 @@ const bodyParser = require('body-parser');
 const Galleries = require('../database/Gallery.js');
 const path = require('path');
 const app = express();
+var cors = require('cors');
 
 const port = 8081;
 
+app.use(cors());
 app.use(express.static(__dirname + '/../dist/'));
-
-// let port = 3002;
 
 app.get('/:id', (req, res) => {
 	console.log('hi');
 	res.sendFile(path.join(`${__dirname}/../dist/index.html`));
 });
+
+
 
 app.get('/homes/:id', (req, res) => {
 	console.log('req.params.urlId is ', req.params.id)
