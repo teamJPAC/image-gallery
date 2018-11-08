@@ -113,7 +113,7 @@ jest.mock('axios', () => {
     },
   ];
   return {
-    get: jest.fn(() => Promise.resolve(sampleData).catch(()=> console.log('hi'))),
+    get: jest.fn(() => Promise.resolve(sampleData).catch(()=> console.log('NOT success!'))),
   };
 });
 
