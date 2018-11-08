@@ -14,8 +14,6 @@ app.get('/:id', (req, res) => {
 	res.sendFile(path.join(`${__dirname}/../dist/index.html`));
 });
 
-
-
 app.get('/homes/:id', (req, res) => {
 	Galleries.find({id: req.params.id}, (err, data) => {
 		if (err) {
