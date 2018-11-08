@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const db = require ('./index.js');
 
 const gallerySchema = new mongoose.Schema({
   id: Number,

@@ -2,7 +2,7 @@ const Gallery = require('./Gallery.js');
 const db = require('./index.js');
 const mongoose = require('mongoose');
 
-const sampleData = []
+const sampleData = []; // replace with generated sample data
 
 const insertDb = () => {
   Gallery.create(sampleData)

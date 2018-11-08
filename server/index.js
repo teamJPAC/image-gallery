@@ -11,16 +11,13 @@ app.use(cors());
 app.use(express.static(__dirname + '/../dist/'));
 
 app.get('/:id', (req, res) => {
-	console.log('hi');
 	res.sendFile(path.join(`${__dirname}/../dist/index.html`));
 });
 
 
 
 app.get('/homes/:id', (req, res) => {
-	console.log('req.params.urlId is ', req.params.id)
 	Galleries.find({id: req.params.id}, (err, data) => {
-		console.log('data is ', data);
 		if (err) {
 			console.log("Error: ", err);
 		} else {
