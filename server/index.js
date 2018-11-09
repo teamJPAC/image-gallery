@@ -16,7 +16,9 @@ app.get('/:id', (req, res) => {
 });
 
 app.get('/homes/:id', (req, res) => {
+	console.log('req.params.id is', req.params.id)
 	Galleries.find({id: req.params.id}, (err, data) => {
+		console.log('data is ', data);
 		if (err) {
 			console.log("Error: ", err);
 		} else {
