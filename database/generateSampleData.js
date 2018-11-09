@@ -1,7 +1,4 @@
 const faker = require('faker');
-const Gallery = require('./Gallery.js');
-const db = require('./index.js');
-const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
 const AWS = require('aws-sdk');
@@ -23,9 +20,10 @@ s3.listObjects(params, (err, data) => {
     console.log(err);
   } else {
     let baseURL = `https://s3-us-west-1.amazonaws.com/homedetails/`;
+    // generates an array of 40 image urls
     let generateImagesArr = () => {
       let imgArr = [];  
-      for (let i = 1; i <= data.Contents.length; i++) {
+      for (let i = 1; i <= 40; i++) {
         let randomIndex = Math.floor(Math.random() * data.Contents.length);
         if (!randomIndex) {
           randomIndex +=1;

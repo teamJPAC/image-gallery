@@ -1,16 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
 
-const headerArr = ["Buy", "Rent", "Sell", "Mortgages", "Agent finder", "More"];
-const dropDownOptions = {
-  'Buy': headerArr,
-  'Rent': headerArr,
-  'Sell': headerArr,
-  'Mortgages': headerArr,
-  'Agent finder': headerArr,
-  'More': headerArr,
-};
-
 const DropDowns = ({header}) => {
   return (
   <NavDropdown className="Nav-top-bar-header" id="dropdowns-list" title={header}>

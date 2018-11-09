@@ -4,6 +4,10 @@ import App from '../App.js';
 import TopNav from '../components/Nav/TopNav.js';
 import NavToolbar from '../components/Nav/NavToolbar.js';
 import DropDowns from '../components/Nav/DropDowns.js'
+import PropertyInfo from '../components/Nav/PropertyInfo.js';
+import Gallery from '../components/Gallery/Gallery.js';
+import Logo from '../components/Nav/Logo.js'
+
 import fetch from 'jest-fetch-mock';
 import axios from 'axios';
 
@@ -117,7 +121,6 @@ jest.mock('axios', () => {
   };
 });
 
-// END TO END TEST 
 describe('App', () => {
 
   // fetch.mockResponse(sampleData);
@@ -136,49 +139,51 @@ describe('App', () => {
     await wrapper.instance().componentDidMount();
     expect(axios.get).not.toHaveBeenCalled();
     expect(axios.get).toHaveBeenCalledWith('local:host')
-    // console.log(wrapper.html())
     
-    // console.log('msg', wrapper.find('TopNav').prop())
-    // expect(wrapper.update().find('TopNav').length).toBe(1)
-    // expect(wrapper.find('#loading-page').length).toBe(1);
-    // expect(wrapper.find('TopNav').length).toBe(1);
+    expect(wrapper.find('#loading-page').length).toBe(1);
+    expect(wrapper.find('PropertyInfo').length).toBe(1);
+    expect(wrapper.find('NavToolbar').length).toBe(1);
+    expect(wrapper.find('Logo').length).toBe(1);
+    expect(wrapper.find('TopNav').length).toBe(1);
   })
 });
 
 
 
-// describe('TopNav', () => {
-//   let wrapper;
-//   beforeEach(() => {
-//     wrapper = shallow(<TopNav />)
-//   });
+describe('TopNav', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<TopNav />)
+  });
 
-//   test('should contain two main section that contains the necessary number of headers: ', () => {
-//       // expect(wrapper.find('#nav-top-main-right').length).toBe(1);
-//       expect(wrapper.find(DropDowns).length).toBe(6);
-//     })
+  test('should contain two main section that contains the necessary number of headers: ', () => {
+      expect(wrapper.find(DropDowns).length).toBe(6);
+    })
 
-//   test('', () => {
-//     wrapper.find(DropDowns).simulate("click");
-//     wrapper.update();
-//     expect(wrapper.find(DropDowns).length).toBe(6);
-//   })
-// })
+  test('', () => {
+    wrapper.find("buy").simulate("onMouseOver");
+    wrapper.update();
+    expect(wrapper.find('DropDowns1').props.length).toBe(1);
+  })
+
+  test('', () => {
+    wrapper.find("sell").simulate("onMouseOver");
+    wrapper.update();
+    expect(wrapper.find('DropDowns2').props.length).toBe(1);
+  })
+
+  test('', () => {
+    wrapper.find("rent").simulate("onMouseOver");
+    wrapper.update();
+    expect(wrapper.find('DropDowns3').props.length).toBe(1);
+  })
+
+  test('', () => {
+    wrapper.find("mortgage").simulate("onMouseOver");
+    wrapper.update();
+    expect(wrapper.find('DropDowns4').props.length).toBe(1);
+  })
+})
 
 
-// describe('Toolbar', () => {
-//   let wrapper;
-//   beforeEach(() => {
-//     wrapper = mount(<NavToolbar />)
-//   });
 
-//   test('should contain two main section that contains the necessary number of headers: ', () => {
-//     (async () => {
-//       await flushPromises();
-//       wrapper.update();
-//       expect(wrapper.find('.Nav-top-bar-header').length).toBe(10);
-//       expect(wrapper.find('nav-top-main-right').length).toBe(10);
-//     })();
-//   });
-
-// })

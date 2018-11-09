@@ -1,10 +1,10 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const Galleries = require('../database/Gallery.js');
 const path = require('path');
-const app = express();
 var cors = require('cors');
+const db = require('../database/index.js');
+const Gallery = require('../database/Gallery.js');
 
+const app = express();
 const port = 8081;
 
 app.use(cors());
@@ -20,12 +20,11 @@ app.get('/homes/:id', (req, res) => {
 	console.log('typeof params.id is ', typeof req.params.id);
 	req.params.id = Number(req.params.id);
 	console.log('typeof params.id is ', typeof req.params.id);
-	Galleries.find({id: req.params.id}, (err, data) => {
+	Gallery.find({id: req.params.id}, (err, data) => {
 		console.log('data is ', data);
 		if (err) {
-			console.log("*************Error*************: ", err);
+			console.log("Error*: ", err);
 		} else {
-			console.log("*************ELSE_BLOCK*************: ");
 			res.status(200).send(data);
 		}
 	})
