@@ -20,7 +20,7 @@ app.get('/homes/:id', (req, res) => {
 	Galleries.find({id: req.params.id}, (err, data) => {
 		console.log('data is ', data);
 		if (err) {
-			console.log("Error: ", err);
+			console.log("*************Error*************: ", err);
 		} else {
 			res.status(200).send(data);
 		}
