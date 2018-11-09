@@ -22,6 +22,8 @@ app.get('/homes/:id', (req, res) => {
 		if (err) {
 			console.log("*************Error*************: ", err);
 		} else {
+			console.log("*************ELSE_BLOCK*************: ", err);
+
 			res.status(200).send(data);
 		}
 	})
