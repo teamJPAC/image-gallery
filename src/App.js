@@ -63,7 +63,7 @@ export default class App extends React.Component {
       )
     } else {
       return (
-        <div id="loading-page">Loading...</div>
+        <div id="loading-page">NOT Loading...</div>
       )
     }
     
