@@ -23,8 +23,10 @@ export default class App extends React.Component {
     let imageId = Number(window.location.pathname.replace(/\//, ''));
     imageId = imageId % 100;
     if (imageId >= 0 && imageId <= 100) {
+      console.log('componentDidMount');
       axios.get(`http://imggallery-env.2bigungm3u.us-west-1.elasticbeanstalk.com/homes/${imageId}`)
       .then(result => {
+        console.log('result is ', result);
         this.setState({
           propInfo: result.data
         })
