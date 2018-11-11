@@ -16,12 +16,8 @@ app.get('/:id', (req, res) => {
 });
 
 app.get('/homes/:id', (req, res) => {
-	console.log('req.params.id is', req.params.id);
-	console.log('typeof params.id is ', typeof req.params.id);
 	req.params.id = Number(req.params.id);
-	console.log('typeof params.id is ', typeof req.params.id);
 	Gallery.find({id: req.params.id}, (err, data) => {
-		console.log('data is ', data);
 		if (err) {
 			console.log("Error*: ", err);
 		} else {

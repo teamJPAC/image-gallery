@@ -1,4 +1,7 @@
 const faker = require('faker');
+const Gallery = require('./Gallery.js');
+const db = require('./index.js');
+const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
 const AWS = require('aws-sdk');
@@ -12,15 +15,14 @@ const seed = [];
 let s3 = new AWS.S3({ apiVersion: '2006-03-01' });
 
 let params = {
-  Bucket: 'homedetails'
+  Bucket: 'fec2homephotos'
 };
 
 s3.listObjects(params, (err, data) => {
   if (err) {
     console.log(err);
   } else {
-    let baseURL = `https://s3-us-west-1.amazonaws.com/homedetails/`;
-    // generates an array of 40 image urls
+    let baseURL = `https://s3-us-west-1.amazonaws.com/fec2homephotos/`;
     let generateImagesArr = () => {
       let imgArr = [];  
       for (let i = 1; i <= 40; i++) {

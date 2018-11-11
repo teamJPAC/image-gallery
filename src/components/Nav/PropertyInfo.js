@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
 
 const PropertyInfo = ({info}) => {
-  console.log('info is ', info)
   return (
     <div className="propertyInfo-main">
       <ul className="propertyInfo-bar">

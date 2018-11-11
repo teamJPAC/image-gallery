@@ -15,12 +15,12 @@ export default class Gallery extends React.Component {
       photoIndex: 0,
       direction: null,
       profile: null || props.img[0],
-      images: null || props.img.slice(0, 25)
+      images: null || props.img.slice(0,35),
+      repeatIcon: <span className="glyphicon glyphicon-repeat"></span>
     }
   };
 
   handleClick(selectedIndex, e) {
-    console.log(`selected=${selectedIndex} direction=${e.direction}`);
     this.setState({
       index: selectedIndex,
       direction: e.direction
@@ -33,25 +33,23 @@ export default class Gallery extends React.Component {
       isOpen: true,
       photoIndex: photoIndex
     })
-    console.log('index is ', this.state.index)
   }
 
   render() {
-    const { isOpen, index, direction, images, profile, photoIndex} = this.state;
+    const { isOpen, index, images, profile, photoIndex, repeatIcon} = this.state;
     return (
       <Carousel 
         interval={null} 
         indicators={false} 
         activeIndex={index}
         prevIcon={index === 0 ? false : console.log('trolled')}
-        nextIcon={index === 1 ? false : console.log('trolled')}
-        direction={direction}
+        nextIcon={index === 2 ? repeatIcon : console.log('trolled')}
         onSelect={this.handleClick.bind(this)}
       >
         <Carousel.Item>
           <div className="img-container">
             <div className="main-profile">
-                <img className="home-profile-image" alt="house" 
+                <img className="home-profile-image" alt="house-profile" 
                   src={profile}
                   onClick={e => this.handleClickImage(e, 0)}
                 />
@@ -78,7 +76,7 @@ export default class Gallery extends React.Component {
               { 
                 images.slice(1).map((image, i) => (
                   <div className="home-children-pictures" key={i}>
-                    <img className="gallery-images" alt="house" src={image} 
+                    <img className="gallery-images" alt="house-details" src={image} 
                       onClick={e => this.handleClickImage(e, i + 1)} 
                     />
                   </div>
@@ -93,7 +91,7 @@ export default class Gallery extends React.Component {
             { 
                 images.slice(9).map((image, i) => (
                   <div className="home-children-pictures" key={i}>
-                    <img className="gallery-images" alt="house" src={image} 
+                    <img className="gallery-images" alt="house-details" src={image} 
                       onClick={e => this.handleClickImage(e, i + 9)} 
                     />
                   </div>
@@ -102,8 +100,22 @@ export default class Gallery extends React.Component {
             </div>                      
           </div>
         </Carousel.Item> 
-      </Carousel>
+        <Carousel.Item>
+          <div className="img-container">
+            <div className="img-side-pictures-container">
+              { 
+                images.slice(21).map((image, i) => (
+                  <div className="home-children-pictures" key={i}>
+                    <img className="gallery-images" alt="house-details" src={image} 
+                      onClick={e => this.handleClickImage(e, i + 21)} 
+                    />
+                  </div>
+                ))
+              }
+            </div>                      
+          </div>
+        </Carousel.Item>
+      </Carousel>  
     )
   }
 };
-

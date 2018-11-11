@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "jest ./src/spec/App.test.js",
+    "dev": "webpack -d --watch",
     "build": "webpack -p",
     "start": "node server/index.js",
     "generateSampleData": "node database/generateSampleData.js",

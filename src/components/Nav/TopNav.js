@@ -1,59 +1,12 @@
 import React from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import DropDowns from './DropDowns';
+import DropDownList from './DropDownList.js';
 
-const topNavHeaders = {
-  'Buy': {
-    subHeader:['Homes for sale'],
-    list: [
-      'Homes for sale',
-      'Foreclosures',
-      'For sale by owner',
-      'Open houses',
-      'New construction',
-      'Coming soon',
-      'Recent home sales',
-      'All homes'
-    ] 
-  },
-  'Rent': {
-    subHeader: ['Search rentals'],
-    list: [
-      'Rental Buildings',
-      'Apartments for rent',
-      'Houses for rent',
-      'All rental listings',
-      'All rental buildings'
-    ]
-  },
-  'Sell': {
-    subHeader: [''],
-    list: [
 
-    ]
-  },
-  'Mortgages': {
-    subHeader: [''],
-    list: [
+const headerArr= Object.keys(DropDownList);
+const dropDownHeader = Object.values(DropDownList);
 
-    ]
-  },
-  'Agent finder': {
-    subHeader: [''],
-    list: [
-
-    ]
-  },
-  'More': {
-    subHeader: [''],
-    list: [
-
-    ]
-  },
-};
-
-const headerArr= Object.keys(topNavHeaders);
-const dropdownList = Object.values(topNavHeaders);
 export class TopNav extends React.Component {
 
   render() {
@@ -63,7 +16,10 @@ export class TopNav extends React.Component {
         <Nav>
           {
             headerArr.map((header, i) => 
-            <DropDowns header={header} key={i} />)
+            <DropDowns header={header}
+                       dropDownHeader={dropDownHeader[i].subHeader}
+                       dropDownList={dropDownHeader[i].list}
+                       key={i} />)
           }
           <Nav id="nav-top-main-right">
             <NavItem id="Nav-top-right1" href="#">List your rental</NavItem>
