@@ -4,7 +4,7 @@
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-# Zill-Woah Reviews
+# Zill-Woah
 
 > Zill-Woah is a emulation of the real estate and rental marketplace, Zillow site's page.  This repo contains the "Navigation bar" and "Image Gallery" component for that project, which fetches house property information and images from the database, displays them to the user via a React frontend, and allows the user to interact with these components
 
