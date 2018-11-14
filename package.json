@@ -11,7 +11,7 @@
     "test": "jest ./src/spec/App.test.js",
     "dev": "webpack -d --watch",
     "build": "webpack -p",
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js --watch",
     "generateSampleData": "node database/generateSampleData.js",
     "db:setup": "node database/seed.js"
   },

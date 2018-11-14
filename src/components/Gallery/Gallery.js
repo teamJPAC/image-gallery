@@ -3,27 +3,29 @@ import { Carousel } from 'react-bootstrap';
 import Lightbox from 'react-image-lightbox';
 
 const captions = [
-  'New Construction: $3,328,000 (4 beds, 4 baths, 4,142 sqft)'
+  'New Construction: $3,328,000 (4 beds, 4 baths, 4,142 sqft)',
 ];
 
 export default class Gallery extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       current: '',
       isOpen: false,
       photoIndex: 0,
       direction: null,
       profile: null || props.img[0],
-      images: null || props.img.slice(0,35),
-      repeatIcon: <span className="glyphicon glyphicon-repeat"></span>
-    }
-  };
+      index: 0,
+      images: null || props.img.slice(0, 35),
+      repeatIcon: <span className="glyphicon glyphicon-repeat" />,
+      hideIcon: <span style={{'display':'none'}} />
+    };
+  }
 
   handleClick(selectedIndex, e) {
     this.setState({
       index: selectedIndex,
-      direction: e.direction
+      direction: e.direction,
     });
   }
 
@@ -31,91 +33,106 @@ export default class Gallery extends React.Component {
     e && e.preventDefault();
     this.setState({
       isOpen: true,
-      photoIndex: photoIndex
-    })
+      photoIndex,
+    });
   }
 
   render() {
-    const { isOpen, index, images, profile, photoIndex, repeatIcon} = this.state;
+    const {
+      isOpen, index, images, profile, photoIndex, repeatIcon, hideIcon
+    } = this.state;
     return (
-      <Carousel 
-        interval={null} 
-        indicators={false} 
+      <Carousel
+        interval={null}
+        indicators={false}
         activeIndex={index}
-        prevIcon={index === 0 ? false : console.log('trolled')}
-        nextIcon={index === 2 ? repeatIcon : console.log('trolled')}
+        prevIcon={index === 0 ? hideIcon: <span className="glyphicon glyphicon-chevron-left"/>}
+        nextIcon={index === 2 ? repeatIcon : <span className="glyphicon glyphicon-chevron-right" />}
         onSelect={this.handleClick.bind(this)}
       >
         <Carousel.Item>
           <div className="img-container">
             <div className="main-profile">
-                <img className="home-profile-image" alt="house-profile" 
-                  src={profile}
-                  onClick={e => this.handleClickImage(e, 0)}
-                />
-                  {
-                    isOpen && 
-                    <Lightbox mainSrc={photoIndex === 0 ? profile : images[photoIndex]} 
-                              nextSrc={images[(photoIndex + images.length + 1 ) % images.length]}
-                              prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                              onMovePrevRequest={() => 
-                                this.setState({
-                                  photoIndex: (photoIndex + images.length - 1) % images.length
-                                })}
-                              onMoveNextRequest={() => 
-                                this.setState({
-                                  photoIndex: (photoIndex + images.length + 1) % images.length
-                                })}
-                              onCloseRequest={() => this.setState({ isOpen: false })}
-                              imageTitle={`${photoIndex + 1} of ${images.length}`}
-                              imageCaption={captions[0]}
+              <img
+                className="home-profile-image"
+                alt="house-profile"
+                src={profile}
+                onClick={e => this.handleClickImage(e, 0)}
+              />
+              {
+                    isOpen
+                    && (
+                    <Lightbox
+                      mainSrc={photoIndex === 0 ? profile : images[photoIndex]}
+                      nextSrc={images[(photoIndex + images.length + 1) % images.length]}
+                      prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                      onMovePrevRequest={() => this.setState({
+                        photoIndex: (photoIndex + images.length - 1) % images.length,
+                      })}
+                      onMoveNextRequest={() => this.setState({
+                        photoIndex: (photoIndex + images.length + 1) % images.length,
+                      })}
+                      onCloseRequest={() => this.setState({ isOpen: false })}
+                      imageTitle={`${photoIndex + 1} of ${images.length}`}
+                      imageCaption={captions[0]}
                     />
-                  }   
+                    )
+                  }
             </div>
             <div className="img-side-pictures-container">
-              { 
+              {
                 images.slice(1).map((image, i) => (
                   <div className="home-children-pictures" key={i}>
-                    <img className="gallery-images" alt="house-details" src={image} 
-                      onClick={e => this.handleClickImage(e, i + 1)} 
+                    <img
+                      className="gallery-images"
+                      alt="house-details"
+                      src={image}
+                      onClick={e => this.handleClickImage(e, i + 1)}
                     />
                   </div>
                 ))
               }
-            </div>                      
+            </div>
           </div>
         </Carousel.Item>
         <Carousel.Item>
           <div className="img-container">
             <div className="img-side-pictures-container">
-            { 
+              {
                 images.slice(9).map((image, i) => (
                   <div className="home-children-pictures" key={i}>
-                    <img className="gallery-images" alt="house-details" src={image} 
-                      onClick={e => this.handleClickImage(e, i + 9)} 
+                    <img
+                      className="gallery-images"
+                      alt="house-details"
+                      src={image}
+                      onClick={e => this.handleClickImage(e, i + 9)}
                     />
                   </div>
                 ))
               }
-            </div>                      
+            </div>
           </div>
-        </Carousel.Item> 
+        </Carousel.Item>
         <Carousel.Item>
           <div className="img-container">
             <div className="img-side-pictures-container">
-              { 
+              {
                 images.slice(21).map((image, i) => (
                   <div className="home-children-pictures" key={i}>
-                    <img className="gallery-images" alt="house-details" src={image} 
-                      onClick={e => this.handleClickImage(e, i + 21)} 
+                    <img
+                      className="gallery-images"
+                      alt="house-details"
+                      src={image}
+                      onClick={e => this.handleClickImage(e, i + 21)}
                     />
                   </div>
                 ))
               }
-            </div>                      
+            </div>
           </div>
         </Carousel.Item>
-      </Carousel>  
-    )
+      </Carousel>
+
+    );
   }
-};
+}
