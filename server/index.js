@@ -28,10 +28,16 @@ app.get('/homes/:id', (req, res) => {
 	})
 });
 
-//This route is incomplete. The obj to be inserted needs to have current data and fields which match the schema
 app.post('/homes/:id', (req, res) => {
-	id = Number(req.params.id);
-	Gallery.insertOne({id: id}, (err, data) => {
+	let newDoc = new Gallery ({ id: 100000000,
+	  imageUrl: 'fake',
+	  address: 'fake',
+	  zipcode: 'fake',
+	  city: 'fake',
+	  State: 'CA',
+	  views: 0,
+	})
+	newDoc.save({id: id}, (err, data) => {
 		if (err) {
 			console.log('Post error: ', err);
 		} else {
@@ -40,29 +46,20 @@ app.post('/homes/:id', (req, res) => {
 	})
 })
 
-//This route is incomplete. The obj to be inserted needs to have current data and fields which match the schema
 app.patch('/homes/:id', (req, res) => {
 	id = Number(req.params.id);
-	Gallery.findOneAndUpdate({"id": id}, (err, data) =>{
-		if (err) {
-			console.log('Patch Error: ', err);
-		} else {
-			res.send(data);
-		}
-	})
+	let query = {id: id}
+	Gallery.findOneAndUpdate(query, { $inc: {views: 1} })
+		.then( data => res.send(data))
+		.catch( err => console.log('Error-->', err))
 })
 
-//This route is incomplete. The obj to be inserted needs to have current data and fields which match the schema
 app.delete('/homes/:id', (req, res) => {
 	id = Number(req.params.id);
-	Gallery.findOneAndDelete({"id": id}, (err, data) =>{
-		if (err) {
-			console.log('Delete Error: ', err);
-		} else {
-			res.send(data);
-		}
+	Gallery.deleteOne({id: id})
+		.then( data => res.send(data))
+		.catch( err => console.log('Error-->', err))
 	})
-})
 
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);

@@ -21,7 +21,12 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    let imageId = Number(window.location.pathname.replace(/\//, ''));
+    let imageId = undefined;
+    if (window.location.pathname === '/') {
+      imageId = Math.floor(Math.random() * (100 - 1)) + 1;
+    } else {
+      imageId = Number(window.location.pathname.replace(/\//, ''))
+    }
     imageId = imageId % 100;
     if (imageId >= 0 && imageId <= 100) {
       axios.get(`/homes/${imageId}`)

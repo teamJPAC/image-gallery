@@ -27,7 +27,8 @@ for (let i = 0; i < 100; i++) {
   property.address = faker.address.streetAddress(),
   property.zipcode = faker.address.zipCode(),
   property.city = faker.address.city(),
-  property.State = faker.address.state()
+  property.State = faker.address.state(),
+  property.views = 0,
   seed.push(property);
 }
 
