@@ -15,19 +15,27 @@ export default class App extends React.Component {
       slider:'nav-toolbar-list'
     }
     this.updateWindowHeight = this.updateWindowHeight.bind(this);
+    this.sendPost = this.sendPost.bind(this);
+    this.sendPatch = this.sendPatch.bind(this);
+    this.sendDelete = this.sendDelete.bind(this);
   }
-  
+
   componentDidMount() {
-    let imageId = Number(window.location.pathname.replace(/\//, ''));
+    let imageId = undefined;
+    if (window.location.pathname === '/') {
+      imageId = Math.floor(Math.random() * (100 - 1)) + 1;
+    } else {
+      imageId = Number(window.location.pathname.replace(/\//, ''))
+    }
     imageId = imageId % 100;
     if (imageId >= 0 && imageId <= 100) {
-      axios.get(`http://imggallery-env.2bigungm3u.us-west-1.elasticbeanstalk.com/homes/${imageId}`)
+      axios.get(`/homes/${imageId}`)
       .then(result => {
         this.setState({
           propInfo: result.data
         })
       })
-    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    }
     this.updateWindowHeight();
   }
 
@@ -47,15 +55,54 @@ export default class App extends React.Component {
     }
   }
 
+  sendPost() {
+    let imageId = Number(window.location.pathname.replace(/\//, ''));
+    imageId = imageId % 100;
+    if (imageId >= 0 && imageId <= 100) {
+    axios.post(`/homes/${imageId}`, {
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    })
+    .then(result => console.log('Post result-->', result.data))
+    .catch(err => console.log(err))
+    }
+  }
+
+  sendPatch() {
+    let imageId = Number(window.location.pathname.replace(/\//, ''));
+    imageId = imageId % 100;
+    if (imageId >= 0 && imageId <= 100) {
+    axios.patch(`/homes/${imageId}`, {
+      firstName: 'Barney',
+      lastName: 'Rubble'
+    })
+    .then(result => console.log('Patch result-->', result.data))
+    .catch(err => console.log(err))
+    }
+  }
+
+  sendDelete() {
+    let imageId = Number(window.location.pathname.replace(/\//, ''));
+    imageId = imageId % 100;
+    if (imageId >= 0 && imageId <= 100) {
+    axios.delete(`/homes/${imageId}`, {
+      information: 'to be deleted'
+    })
+    .then(result => console.log('Delete result-->', result.data))
+    .catch(err => console.log(err))
+    }
+  }
+
   render(){
     const {height, slider, propInfo} = this.state
     if (propInfo.length) {
       return (
         <div className="main-wrapper">
           <Logo />
-          <NavToolbar height={height} slider={slider} />
+          <NavToolbar height={height} slider={slider}
+          sendPost ={this.sendPost} sendPatch={this.sendPatch} sendDelete={this.sendDelete}/>
           <PropertyInfo info={propInfo[0]} />
-          <Gallery img={propInfo[0].imageUrl}/> 
+          <Gallery img={propInfo[0].imageUrl}/>
         </div>
       )
     } else {

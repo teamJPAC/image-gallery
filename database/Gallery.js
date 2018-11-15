@@ -8,6 +8,7 @@ const gallerySchema = new mongoose.Schema({
   zipcode: String,
   city: String,
   State: String,
+  views: Number,
 });
 
 const Gallery = mongoose.model('Gallery', gallerySchema);
