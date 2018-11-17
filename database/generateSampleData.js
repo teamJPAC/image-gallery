@@ -61,12 +61,19 @@ const firstCreate = async () => {
   csvStream.pipe(writeableStream);
   console.time('timer');
   let batches = 500;
-
+  let property = {};
   let count = 1;
   while (count <= batches) {
     count ++;
     for (let i = 0; i< 10000; i++) {
-      csvStream.write(generateMockData())
+      property.id = overallCount,
+      property.imageUrl = generateImagesArr();
+      property.address = chance.address(),
+      property.zipcode = chance.zip(),
+      property.city = chance.city(),
+      property.State = chance.state(),
+      property.views = 0;
+      csvStream.write(property)
     }
   }
 }
