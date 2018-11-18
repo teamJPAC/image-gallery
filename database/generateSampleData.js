@@ -1,38 +1,14 @@
-const Gallery = require('./Gallery.js');
-const db = require('./index.js');
-const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const photos = require('./photoList.js');
 const Chance = require('chance');
 const chance = new Chance();
+const { Readable } = require('stream');
+const writeableStream = fs.createWriteStream(__dirname + '/mockData.csv');
 
-const csv = require('fast-csv');
-const writeableStream = fs.createWriteStream(__dirname + '/bigMockData.csv');
-
-const headers = [
-  "id",
-  "imageUrl",
-  "address",
-  "zipcode",
-  "city",
-  "State",
-  "views"
-];
-
-const csvStream = csv.createWriteStream({headers: headers});
-
-writeableStream.on("finish", function(){
-  console.log("DONE!");
-});
-
-//to create 10mm records of sample data with a machine with 8g of ram, shut down chrome and as many applications as possible and run this script in your terminal in the project dir:
-//node --max-old-space-size=8192 generateSampleData/practice.js
-
+//run this script in terminal to time and build the csv "time node database/practice.js"
 
 generateImagesArr = () => {
   let startIndex = Math.floor(Math.random() * Math.floor(1026));
-  //let range = Math.floor(Math.random() * (21 - 10)) + 10;
   let range = Math.floor(Math.random() * (21 - 10)) + 10;
   let picIds = [];
   while ( range > 0 ) {
@@ -43,49 +19,26 @@ generateImagesArr = () => {
   return picIds;
 }
 
-let overallCount = 1;
-generateMockData = () => {
-  overallCount++;
-  let property = {};
-  property.id = overallCount,
-  property.imageUrl = generateImagesArr();
-  property.address = chance.address(),
-  property.zipcode = chance.zip(),
-  property.city = chance.city(),
-  property.State = chance.state(),
-  property.views = 0;
-  return property;
-}
-
-const firstCreate = async () => {
-  csvStream.pipe(writeableStream);
-  console.time('timer');
-  let batches = 500;
-
-  let count = 1;
-  while (count <= batches) {
-    count ++;
-    for (let i = 0; i< 10000; i++) {
-      csvStream.write(generateMockData())
+let idCounter = 1;
+const inStream = new Readable({
+  read() {
+    if (idCounter === 1) {
+      this.push('id,imageUrl,address,zipcode,city,State,views\n')
+      console.time('one million records created in');
+    }
+    this.push(`${idCounter},${generateImagesArr()},${chance.address()},${chance.zip()},${chance.city()},${chance.state()},${0}\n`)
+    idCounter++;
+    if( idCounter === 1000001) {
+      this.push(null);
+    }
+    if( idCounter % 1000000 === 0 ) {
+      console.log(`${idCounter} records created so far`)
+      console.timeEnd('one million records created in');
+      console.time('one million records created in');
     }
   }
-}
 
-const secondCreate = async () => {
-  let batches = 500;
+});
 
-  let count = 1;
-  while (count <= batches) {
-    count ++;
-    for (let i = 0; i< 10000; i++) {
-      csvStream.write(generateMockData())
-    }
-  }
-}
+inStream.pipe(writeableStream);
 
-  firstCreate()
-  .then( () => console.log('Done with first function...') )
-  .then( () => secondCreate() )
-  .then( () => csvStream.end() )
-  .then( () => console.timeEnd('timer') )
-  .catch( err => console.log('create catch -->', err) )
