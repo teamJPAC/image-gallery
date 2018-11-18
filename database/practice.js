@@ -41,4 +41,3 @@ const inStream = new Readable({
 });
 
 inStream.pipe(writeableStream);
-
