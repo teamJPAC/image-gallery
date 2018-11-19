@@ -5,30 +5,30 @@ const chance = new Chance();
 const { Readable } = require('stream');
 const writeableStream = fs.createWriteStream(__dirname + '/mockData.csv');
 
-//run this script in terminal to time and build the csv "time node database/practice.js"
+//run this script in terminal to time and build the csv "time node database/generateSampleData.js"
 
 generateImagesArr = () => {
   let startIndex = Math.floor(Math.random() * Math.floor(1026));
   let range = Math.floor(Math.random() * (21 - 10)) + 10;
-  let picIds = [];
+  let picIds = '';
+  counter = 1;
   while ( range > 0 ) {
-    picIds.push(startIndex);
+    picIds += startIndex + ",";
     startIndex++;
     range--;
   }
-  return picIds;
+  return picIds.slice(0,-1);
 }
 
 let idCounter = 1;
 const inStream = new Readable({
   read() {
     if (idCounter === 1) {
-      this.push('id,imageUrl,address,zipcode,city,State,views\n')
+      //this.push('id,imageUrl,address,zipcode,city,State,views\n')
       console.time('one million records created in');
     }
-    this.push(`${idCounter},${generateImagesArr()},${chance.address()},${chance.zip()},${chance.city()},${chance.state()},${0}\n`)
-    idCounter++;
-    if( idCounter === 1000001) {
+    this.push(`${idCounter},"${generateImagesArr()}",${chance.address()},${chance.zip()},${chance.city()},${chance.state()},${0}\n`)
+    if( idCounter === 10000000) {
       this.push(null);
     }
     if( idCounter % 1000000 === 0 ) {
@@ -36,9 +36,12 @@ const inStream = new Readable({
       console.timeEnd('one million records created in');
       console.time('one million records created in');
     }
+    idCounter++;
   }
-
 });
 
 inStream.pipe(writeableStream);
+//inStream.pipe(process.stdout);
+
+
 
