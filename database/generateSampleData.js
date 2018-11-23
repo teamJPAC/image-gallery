@@ -3,7 +3,7 @@ const path = require('path');
 const Chance = require('chance');
 const chance = new Chance();
 const { Readable } = require('stream');
-const writeableStream = fs.createWriteStream(__dirname + '/mockData.csv');
+const writeableStream = fs.createWriteStream(__dirname + '/mockData2.csv');
 
 //run this script in terminal to time and build the csv "time node database/generateSampleData.js"
 
