@@ -36,4 +36,4 @@ MyModel.syncDB(function(err, result) {
     }
 });
 
-//COPY listing_data."listing"(id,image_url,address,zipcode,city,state,views) FROM 'MOCKDATA.CSV';
+
