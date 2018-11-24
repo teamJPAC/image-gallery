@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
 var cors = require('cors');
-const db = require('../database/index.js');
-const Gallery = require('../database/Gallery.js');
+// const db = require('../database/index.js');
+// const Gallery = require('../database/Gallery.js');
+const pg = require('../database/pgSchema.js');
+const formatImageUrls = require('../database/models.js');
 
 const app = express();
 const port = 8081;
@@ -17,16 +19,25 @@ app.get('/:id', (req, res) => {
 	res.sendFile(path.join(`${__dirname}/../dist/index.html`));
 });
 
+// app.get('/homes/:id', (req, res) => {
+// 	req.params.id = Number(req.params.id);
+// 	Gallery.find({id: req.params.id}, (err, data) => {
+// 		if (err) {
+// 			console.log("Error*: ", err);
+// 		} else {
+// 			res.status(200).send(data);
+// 		}
+// 	})
+// });
+
 app.get('/homes/:id', (req, res) => {
 	req.params.id = Number(req.params.id);
-	Gallery.find({id: req.params.id}, (err, data) => {
-		if (err) {
-			console.log("Error*: ", err);
-		} else {
-			res.status(200).send(data);
-		}
-	})
-});
+	let queryString = `SELECT * FROM user_data WHERE id = ${req.params.id};`;
+	pg.query(queryString)
+		.then( data => formatImageUrls(data) )
+		.then( data => res.status(200).send(data) )
+		.catch( err => console.log('error with query: ', err) );
+	});
 
 app.post('/homes/:id', (req, res) => {
 	let newDoc = new Gallery ({ id: 100000000,

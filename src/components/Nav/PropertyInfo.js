@@ -12,7 +12,7 @@ const PropertyInfo = ({info}) => {
           <a><span>{info.address}</span></a>
           <a><span>{info.zipcode.slice(0, 5)}</span></a>
           <a><span>{info.city}</span></a>
-          <a><span>{info.State}</span></a>
+          <a><span>{info.state}</span></a>
         </li>
       </ul>
     </div>

@@ -23,16 +23,16 @@ export default class App extends React.Component {
   componentDidMount() {
     let imageId = undefined;
     if (window.location.pathname === '/') {
-      imageId = Math.floor(Math.random() * (100 - 1)) + 1;
+      imageId = Math.floor(Math.random() * (10000000 - 1)) + 1;
     } else {
       imageId = Number(window.location.pathname.replace(/\//, ''))
     }
-    imageId = imageId % 100;
-    if (imageId >= 0 && imageId <= 100) {
+    //imageId = imageId % 100;
+    if (imageId >= 0 && imageId <= 10000000) {
       axios.get(`/homes/${imageId}`)
       .then(result => {
         this.setState({
-          propInfo: result.data
+          propInfo: [ result.data.rows[0] ]
         })
       })
     }
@@ -101,8 +101,8 @@ export default class App extends React.Component {
           <Logo />
           <NavToolbar height={height} slider={slider}
           sendPost ={this.sendPost} sendPatch={this.sendPatch} sendDelete={this.sendDelete}/>
-          <PropertyInfo info={propInfo[0]} />
-          <Gallery img={propInfo[0].imageUrl}/>
+          <PropertyInfo info={this.state.propInfo[0]} />
+          <Gallery img={propInfo[0].image_url}/>
         </div>
       )
     } else {
