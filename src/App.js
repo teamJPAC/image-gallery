@@ -15,9 +15,9 @@ export default class App extends React.Component {
       slider:'nav-toolbar-list'
     }
     this.updateWindowHeight = this.updateWindowHeight.bind(this);
-    this.sendPost = this.sendPost.bind(this);
-    this.sendPatch = this.sendPatch.bind(this);
-    this.sendDelete = this.sendDelete.bind(this);
+    // this.sendPost = this.sendPost.bind(this);
+    // this.sendPatch = this.sendPatch.bind(this);
+    // this.sendDelete = this.sendDelete.bind(this);
   }
 
   componentDidMount() {
@@ -55,43 +55,43 @@ export default class App extends React.Component {
     }
   }
 
-  sendPost() {
-    let imageId = Number(window.location.pathname.replace(/\//, ''));
-    imageId = imageId % 100;
-    if (imageId >= 0 && imageId <= 100) {
-    axios.post(`/homes/${imageId}`, {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    })
-    .then(result => console.log('Post result-->', result.data))
-    .catch(err => console.log(err))
-    }
-  }
+  // sendPost() {
+  //   let imageId = Number(window.location.pathname.replace(/\//, ''));
+  //   imageId = imageId % 100;
+  //   if (imageId >= 0 && imageId <= 100) {
+  //   axios.post(`/homes/${imageId}`, {
+  //     firstName: 'Fred',
+  //     lastName: 'Flintstone'
+  //   })
+  //   .then(result => console.log('Post result-->', result.data))
+  //   .catch(err => console.log(err))
+  //   }
+  // }
 
-  sendPatch() {
-    let imageId = Number(window.location.pathname.replace(/\//, ''));
-    imageId = imageId % 100;
-    if (imageId >= 0 && imageId <= 100) {
-    axios.patch(`/homes/${imageId}`, {
-      firstName: 'Barney',
-      lastName: 'Rubble'
-    })
-    .then(result => console.log('Patch result-->', result.data))
-    .catch(err => console.log(err))
-    }
-  }
+  // sendPatch() {
+  //   let imageId = Number(window.location.pathname.replace(/\//, ''));
+  //   imageId = imageId % 100;
+  //   if (imageId >= 0 && imageId <= 100) {
+  //   axios.patch(`/homes/${imageId}`, {
+  //     firstName: 'Barney',
+  //     lastName: 'Rubble'
+  //   })
+  //   .then(result => console.log('Patch result-->', result.data))
+  //   .catch(err => console.log(err))
+  //   }
+  // }
 
-  sendDelete() {
-    let imageId = Number(window.location.pathname.replace(/\//, ''));
-    imageId = imageId % 100;
-    if (imageId >= 0 && imageId <= 100) {
-    axios.delete(`/homes/${imageId}`, {
-      information: 'to be deleted'
-    })
-    .then(result => console.log('Delete result-->', result.data))
-    .catch(err => console.log(err))
-    }
-  }
+  // sendDelete() {
+  //   let imageId = Number(window.location.pathname.replace(/\//, ''));
+  //   imageId = imageId % 100;
+  //   if (imageId >= 0 && imageId <= 100) {
+  //   axios.delete(`/homes/${imageId}`, {
+  //     information: 'to be deleted'
+  //   })
+  //   .then(result => console.log('Delete result-->', result.data))
+  //   .catch(err => console.log(err))
+  //   }
+  // }
 
   render(){
     const {height, slider, propInfo} = this.state
@@ -99,8 +99,7 @@ export default class App extends React.Component {
       return (
         <div className="main-wrapper">
           <Logo />
-          <NavToolbar height={height} slider={slider}
-          sendPost ={this.sendPost} sendPatch={this.sendPatch} sendDelete={this.sendDelete}/>
+          <NavToolbar height={height} slider={slider}/>
           <PropertyInfo info={this.state.propInfo[0]} />
           <Gallery img={propInfo[0].image_url}/>
         </div>
