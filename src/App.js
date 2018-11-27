@@ -15,12 +15,14 @@ export default class App extends React.Component {
       slider:'nav-toolbar-list'
     }
     this.updateWindowHeight = this.updateWindowHeight.bind(this);
+    this.getNextListing = this.getNextListing.bind(this);
     // this.sendPost = this.sendPost.bind(this);
     // this.sendPatch = this.sendPatch.bind(this);
     // this.sendDelete = this.sendDelete.bind(this);
   }
 
   componentDidMount() {
+    console.log('COMPONENT DID MOUNT WAS CALLED')
     let imageId = undefined;
     if (window.location.pathname === '/') {
       imageId = Math.floor(Math.random() * (10000000 - 1)) + 1;
@@ -53,6 +55,17 @@ export default class App extends React.Component {
        })
       }
     }
+  }
+
+  getNextListing() {
+    let imageId = Math.floor(Math.random() * (10000000 - 1)) + 1;
+    axios.get(`/homes/${imageId}`)
+      .then(result => {
+        this.setState( (state, props) => ({
+          propInfo: [ result.data.rows[0] ]
+        }))
+      })
+    this.updateWindowHeight();
   }
 
   // sendPost() {
@@ -94,17 +107,20 @@ export default class App extends React.Component {
   // }
 
   render(){
-    const {height, slider, propInfo} = this.state
-    if (propInfo.length) {
+    //const {height, slider, propInfo} = this.state
+    if (this.state.propInfo.length) {
+      console.log('i am about to render the App because the propInfo.length > 0')
       return (
         <div className="main-wrapper">
           <Logo />
-          <NavToolbar height={height} slider={slider}/>
+          <NavToolbar height={this.state.height} slider={this.state.slider}
+          getNextListing={this.getNextListing}/>
           <PropertyInfo info={this.state.propInfo[0]} />
-          <Gallery img={propInfo[0].image_url}/>
+          <Gallery img={this.state.propInfo[0].image_url}/>
         </div>
       )
     } else {
+      console.log('I am about to render NOT LOADING...')
       return (
         <div id="loading-page">NOT Loading...</div>
       )

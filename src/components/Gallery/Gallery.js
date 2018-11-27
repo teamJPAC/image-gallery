@@ -38,9 +38,12 @@ export default class Gallery extends React.Component {
   }
 
   render() {
+    // removed profile and images from deconstructed state
     const {
-      isOpen, index, images, profile, photoIndex, repeatIcon, hideIcon
+      isOpen, index, photoIndex, repeatIcon, hideIcon
     } = this.state;
+    const images = this.props.img;
+    const profile = this.props.img[0];
     return (
       <Carousel
         interval={null}
