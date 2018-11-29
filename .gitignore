@@ -2,3 +2,6 @@ node_modules
 
 ## API Keys ##
 database/config.json
+apiKeys.js
+database/mockData.csv
+newrelic_agent.log
