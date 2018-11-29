@@ -22,7 +22,6 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('COMPONENT DID MOUNT WAS CALLED')
     let imageId = undefined;
     if (window.location.pathname === '/') {
       imageId = Math.floor(Math.random() * (10000000 - 1)) + 1;
@@ -109,7 +108,6 @@ export default class App extends React.Component {
   render(){
     //const {height, slider, propInfo} = this.state
     if (this.state.propInfo.length) {
-      console.log('i am about to render the App because the propInfo.length > 0')
       return (
         <div className="main-wrapper">
           <Logo />
@@ -120,7 +118,6 @@ export default class App extends React.Component {
         </div>
       )
     } else {
-      console.log('I am about to render NOT LOADING...')
       return (
         <div id="loading-page">NOT Loading...</div>
       )

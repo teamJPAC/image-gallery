@@ -1,5 +1,5 @@
 'use strict'
-import key from './apiKeys.js';
+const key = require ('./apiKeys.js');
 /**
  * New Relic agent configuration.
  *
@@ -14,7 +14,7 @@ exports.config = {
   /**
    * Your New Relic license key.
    */
-  license_key: key,
+  license_key: [ key ],
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
