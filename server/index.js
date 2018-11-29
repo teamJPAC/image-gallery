@@ -15,13 +15,11 @@ app.use(cors());
 app.use(express.static(__dirname + '/../dist/'));
 app.use(bodyParser.json())
 
-// app.get('/:id', (req, res) => {
-// 	console.log('another get req was called with these params-->', req.params.id)
-// 	//res.sendFile(path.join(`${__dirname}/../dist/index.html`));
-// });
+app.get('/:id', (req, res) => {
+	res.sendFile(path.join(`${__dirname}/../dist/index.html`));
+});
 
 app.get('/homes/:id', (req, res) => {
-	console.log('I was hit! Here is the ID--> ', req.params.id)
 	console.time('DB Query')
 	req.params.id = Number(req.params.id);
 	let queryString = `SELECT * FROM user_data WHERE id = ${req.params.id};`;
@@ -30,7 +28,6 @@ app.get('/homes/:id', (req, res) => {
 		.then( data => res.status(200).send(data) )
 		.catch( err => res.send(err) );
 		console.timeEnd('DB Query')
-		// on line 29 always send response--
 	});
 
 // These were the CRUD routes for MongoDB with Mongoose.
